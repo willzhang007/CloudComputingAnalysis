@@ -1,0 +1,1232 @@
+Last login: Mon Apr 11 14:23:11 on ttys000
+LinLindeMacBook-Pro:~ linlinding$ cd Documents/670OS/OSproject/installfile/PerfKitBenchmarker-1.2.0
+LinLindeMacBook-Pro:PerfKitBenchmarker-1.2.0 linlinding$ ./pkb.py --project=sage-potential-127001 --benchmarks=netperf --machine_type=f1-micro
+2016-04-11 14:34:46,407 02603cc9 MainThread INFO     Verbose logging to: /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/pkb.log
+2016-04-11 14:34:46,408 02603cc9 MainThread INFO     PerfKitBenchmarker version: unknown
+2016-04-11 14:34:46,660 02603cc9 MainThread INFO     Flag values:
+--machine_type=f1-micro
+--project=sage-potential-127001
+--benchmarks=netperf
+2016-04-11 14:34:46,690 02603cc9 MainThread netperf(1/1) INFO     Provisioning resources for benchmark netperf
+2016-04-11 14:34:46,693 02603cc9 Thread-1 netperf(1/1) INFO     Running: gcloud compute networks create pkb-network-02603cc9 --format json --quiet --project sage-potential-127001 --range 10.0.0.0/16
+2016-04-11 14:35:31,873 02603cc9 Thread-1 netperf(1/1) INFO     Running: gcloud compute networks describe pkb-network-02603cc9 --format json --quiet --project sage-potential-127001
+2016-04-11 14:35:36,268 02603cc9 Thread-1 netperf(1/1) INFO     Running: gcloud compute firewall-rules create default-internal-02603cc9 --format json --quiet --project sage-potential-127001 --allow tcp:1-65535,udp:1-65535,icmp --network pkb-network-02603cc9 --source-ranges 10.0.0.0/16
+2016-04-11 14:35:54,362 02603cc9 Thread-1 netperf(1/1) INFO     Running: gcloud compute firewall-rules describe default-internal-02603cc9 --format json --quiet --project sage-potential-127001
+2016-04-11 14:35:56,062 02603cc9 Thread-6 netperf(1/1) INFO     Running: gcloud compute firewall-rules create perfkit-firewall-02603cc9-22 --format json --quiet --project sage-potential-127001 --allow tcp:22,udp:22 --network pkb-network-02603cc9
+2016-04-11 14:36:14,414 02603cc9 Thread-6 netperf(1/1) INFO     Running: gcloud compute firewall-rules describe perfkit-firewall-02603cc9-22 --format json --quiet --project sage-potential-127001
+2016-04-11 14:36:16,255 02603cc9 Thread-6 netperf(1/1) INFO     Running: gcloud compute instances create pkb-02603cc9-0 --format json --quiet --project sage-potential-127001 --zone us-central1-a --network pkb-network-02603cc9 --image ubuntu-14-04 --boot-disk-auto-delete --boot-disk-size 10 --boot-disk-type pd-standard --machine-type f1-micro --tags perfkitbenchmarker --no-restart-on-failure --metadata-from-file sshKeys=/var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/key-metadatarDMK07 --metadata owner=linlinding --maintenance-policy TERMINATE
+2016-04-11 14:36:16,256 02603cc9 Thread-7 netperf(1/1) INFO     Running: gcloud compute instances create pkb-02603cc9-1 --format json --quiet --project sage-potential-127001 --zone us-central1-a --network pkb-network-02603cc9 --image ubuntu-14-04 --boot-disk-auto-delete --boot-disk-size 10 --boot-disk-type pd-standard --machine-type f1-micro --tags perfkitbenchmarker --no-restart-on-failure --metadata-from-file sshKeys=/var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/key-metadataI1FNRq --metadata owner=linlinding --maintenance-policy TERMINATE
+2016-04-11 14:36:45,267 02603cc9 Thread-6 netperf(1/1) INFO     Running: gcloud compute instances describe pkb-02603cc9-0 --format json --quiet --project sage-potential-127001 --zone us-central1-a
+2016-04-11 14:36:45,508 02603cc9 Thread-7 netperf(1/1) INFO     Running: gcloud compute instances describe pkb-02603cc9-1 --format json --quiet --project sage-potential-127001 --zone us-central1-a
+2016-04-11 14:36:46,916 02603cc9 Thread-6 netperf(1/1) INFO     Running: gcloud compute instances describe pkb-02603cc9-0 --format json --quiet --project sage-potential-127001 --zone us-central1-a
+2016-04-11 14:36:47,058 02603cc9 Thread-7 netperf(1/1) INFO     Running: gcloud compute instances describe pkb-02603cc9-1 --format json --quiet --project sage-potential-127001 --zone us-central1-a
+2016-04-11 14:36:48,665 02603cc9 Thread-7 netperf(1/1) INFO     VM: 104.197.254.171
+2016-04-11 14:36:48,665 02603cc9 Thread-6 netperf(1/1) INFO     VM: 146.148.81.46
+2016-04-11 14:36:48,666 02603cc9 Thread-7 netperf(1/1) INFO     Waiting for boot completion.
+2016-04-11 14:36:48,666 02603cc9 Thread-6 netperf(1/1) INFO     Waiting for boot completion.
+2016-04-11 14:36:48,666 02603cc9 Thread-7 netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@104.197.254.171 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile hostname
+2016-04-11 14:36:48,667 02603cc9 Thread-6 netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@146.148.81.46 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile hostname
+2016-04-11 14:36:49,461 02603cc9 Thread-7 netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@104.197.254.171 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile hostname
+2016-04-11 14:36:49,693 02603cc9 Thread-6 netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@146.148.81.46 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile hostname
+2016-04-11 14:36:50,486 02603cc9 Thread-7 netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@104.197.254.171 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile hostname
+2016-04-11 14:36:50,809 02603cc9 Thread-6 netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@146.148.81.46 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile hostname
+2016-04-11 14:36:51,327 02603cc9 Thread-7 netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@104.197.254.171 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile hostname
+2016-04-11 14:36:51,911 02603cc9 Thread-6 netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@146.148.81.46 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile hostname
+2016-04-11 14:36:52,223 02603cc9 Thread-7 netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@104.197.254.171 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile hostname
+2016-04-11 14:36:53,031 02603cc9 Thread-6 netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@146.148.81.46 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile hostname
+2016-04-11 14:36:53,357 02603cc9 Thread-7 netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@104.197.254.171 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile hostname
+2016-04-11 14:36:53,907 02603cc9 Thread-6 netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@146.148.81.46 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile hostname
+2016-04-11 14:36:54,188 02603cc9 Thread-7 netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@104.197.254.171 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile hostname
+2016-04-11 14:36:54,649 02603cc9 Thread-6 netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@146.148.81.46 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile hostname
+2016-04-11 14:36:55,111 02603cc9 Thread-7 netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@104.197.254.171 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile hostname
+2016-04-11 14:36:55,372 02603cc9 Thread-6 netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@146.148.81.46 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile hostname
+2016-04-11 14:36:55,964 02603cc9 Thread-7 netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@104.197.254.171 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile hostname
+2016-04-11 14:36:56,279 02603cc9 Thread-6 netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@146.148.81.46 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile hostname
+2016-04-11 14:36:57,168 02603cc9 Thread-6 netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@146.148.81.46 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile hostname
+2016-04-11 14:36:58,296 02603cc9 Thread-6 netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@146.148.81.46 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile hostname
+2016-04-11 14:36:59,081 02603cc9 Thread-6 netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@146.148.81.46 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile hostname
+2016-04-11 14:37:00,077 02603cc9 Thread-6 netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@146.148.81.46 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile hostname
+2016-04-11 14:37:00,950 02603cc9 Thread-7 netperf(1/1) INFO     Running: gcloud compute instances add-metadata pkb-02603cc9-1 --format json --quiet --project sage-potential-127001 --zone us-central1-a --metadata benchmark_uid=netperf0,benchmark=netperf,perfkit_uuid=64959ae7-5bbc-4671-b2f6-8263fbaa0e5c
+2016-04-11 14:37:05,822 02603cc9 Thread-6 netperf(1/1) INFO     Running: gcloud compute instances add-metadata pkb-02603cc9-0 --format json --quiet --project sage-potential-127001 --zone us-central1-a --metadata benchmark_uid=netperf0,benchmark=netperf,perfkit_uuid=64959ae7-5bbc-4671-b2f6-8263fbaa0e5c
+2016-04-11 14:37:18,736 02603cc9 Thread-6 netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@146.148.81.46 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile mkdir -p /tmp/pkb
+2016-04-11 14:37:19,019 02603cc9 Thread-7 netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@104.197.254.171 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile mkdir -p /tmp/pkb
+2016-04-11 14:37:19,823 02603cc9 MainThread netperf(1/1) INFO     ssh to VMs in this benchmark by name with:
+  ssh -F /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/ssh_config <vm_name>
+  ssh -F /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/ssh_config vm<index>
+  ssh -F /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/ssh_config <group_name>-<index>
+2016-04-11 14:37:19,824 02603cc9 MainThread netperf(1/1) INFO     Preparing benchmark netperf
+2016-04-11 14:37:19,825 02603cc9 Thread-44 netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@146.148.81.46 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile sudo apt-get update
+2016-04-11 14:37:19,826 02603cc9 Thread-45 netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@104.197.254.171 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile sudo apt-get update
+2016-04-11 14:37:31,250 02603cc9 Thread-45 netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@104.197.254.171 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile sudo DEBIAN_FRONTEND='noninteractive' /usr/bin/apt-get -y install build-essential git libtool autoconf automake
+2016-04-11 14:37:32,037 02603cc9 Thread-44 netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@146.148.81.46 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile sudo DEBIAN_FRONTEND='noninteractive' /usr/bin/apt-get -y install build-essential git libtool autoconf automake
+2016-04-11 14:37:49,331 02603cc9 Thread-45 netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@104.197.254.171 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile sudo DEBIAN_FRONTEND='noninteractive' /usr/bin/apt-get -y install curl
+2016-04-11 14:37:51,100 02603cc9 Thread-44 netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@146.148.81.46 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile sudo DEBIAN_FRONTEND='noninteractive' /usr/bin/apt-get -y install curl
+2016-04-11 14:37:51,113 02603cc9 Thread-45 netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@104.197.254.171 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile curl ftp://ftp.netperf.org/netperf/archive/netperf-2.6.0.tar.gz -o /tmp/pkb/netperf-2.6.0.tar.gz
+2016-04-11 14:37:53,132 02603cc9 Thread-44 netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@146.148.81.46 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile curl ftp://ftp.netperf.org/netperf/archive/netperf-2.6.0.tar.gz -o /tmp/pkb/netperf-2.6.0.tar.gz
+2016-04-11 14:37:54,285 02603cc9 Thread-45 netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@104.197.254.171 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile cd /tmp/pkb && tar xvzf netperf-2.6.0.tar.gz
+2016-04-11 14:37:55,287 02603cc9 Thread-45 netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@104.197.254.171 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile cd /tmp/pkb/netperf-2.6.0 && ./configure && make
+2016-04-11 14:37:57,312 02603cc9 Thread-44 netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@146.148.81.46 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile cd /tmp/pkb && tar xvzf netperf-2.6.0.tar.gz
+2016-04-11 14:37:59,396 02603cc9 Thread-44 netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@146.148.81.46 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile cd /tmp/pkb/netperf-2.6.0 && ./configure && make
+2016-04-11 14:38:30,803 02603cc9 MainThread netperf(1/1) INFO     Running: gcloud compute firewall-rules create perfkit-firewall-02603cc9-20000 --format json --quiet --project sage-potential-127001 --allow tcp:20000,udp:20000 --network pkb-network-02603cc9
+2016-04-11 14:39:00,645 02603cc9 MainThread netperf(1/1) INFO     Running: gcloud compute firewall-rules describe perfkit-firewall-02603cc9-20000 --format json --quiet --project sage-potential-127001
+2016-04-11 14:39:02,305 02603cc9 MainThread netperf(1/1) INFO     Running: gcloud compute firewall-rules create perfkit-firewall-02603cc9-20001 --format json --quiet --project sage-potential-127001 --allow tcp:20001,udp:20001 --network pkb-network-02603cc9
+2016-04-11 14:39:36,213 02603cc9 MainThread netperf(1/1) INFO     Running: gcloud compute firewall-rules describe perfkit-firewall-02603cc9-20001 --format json --quiet --project sage-potential-127001
+2016-04-11 14:39:37,965 02603cc9 MainThread netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@104.197.254.171 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile /tmp/pkb/netperf-2.6.0/src/netserver -p 20000
+2016-04-11 14:39:39,720 02603cc9 MainThread netperf(1/1) INFO     Running benchmark netperf
+2016-04-11 14:39:39,721 02603cc9 MainThread netperf(1/1) INFO     netperf running on 146.148.81.46
+2016-04-11 14:39:39,722 02603cc9 MainThread netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@146.148.81.46 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile /tmp/pkb/netperf-2.6.0/src/netperf -p 20000 -j -t TCP_RR -H 104.197.254.171 -l 60   -- -P 20001 -o THROUGHPUT,THROUGHPUT_UNITS,P50_LATENCY,P90_LATENCY,P99_LATENCY,STDDEV_LATENCY,CONFIDENCE_ITERATION,THROUGHPUT_CONFID
+2016-04-11 14:40:40,796 02603cc9 MainThread netperf(1/1) INFO     Ran ssh -A -p 22 perfkit@146.148.81.46 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile /tmp/pkb/netperf-2.6.0/src/netperf -p 20000 -j -t TCP_RR -H 104.197.254.171 -l 60   -- -P 20001 -o THROUGHPUT,THROUGHPUT_UNITS,P50_LATENCY,P90_LATENCY,P99_LATENCY,STDDEV_LATENCY,CONFIDENCE_ITERATION,THROUGHPUT_CONFID. Got return code (0).
+STDOUT: MIGRATED TCP REQUEST/RESPONSE TEST from 0.0.0.0 (0.0.0.0) port 20001 AF_INET to 104.197.254.171 () port 20001 AF_INET : first burst 0
+Throughput,Throughput Units,50th Percentile Latency Microseconds,90th Percentile Latency Microseconds,99th Percentile Latency Microseconds,Stddev Latency Microseconds,Confidence Iterations Run,Throughput Confidence Width (%)
+2082.84,Trans/s,464,537,740,157.18,1,-1.000
+
+STDERR: Warning: Permanently added '146.148.81.46' (ECDSA) to the list of known hosts.
+
+2016-04-11 14:40:40,797 02603cc9 MainThread netperf(1/1) INFO     Netperf Results: {'Confidence Iterations Run': '1', 'Throughput Confidence Width (%)': '-1.000', '99th Percentile Latency Microseconds': '740', '50th Percentile Latency Microseconds': '464', 'Throughput': '2082.84', 'Stddev Latency Microseconds': '157.18', 'Throughput Units': 'Trans/s', '90th Percentile Latency Microseconds': '537'}
+2016-04-11 14:40:40,798 02603cc9 MainThread netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@146.148.81.46 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile ping -c 1 10.0.0.3
+2016-04-11 14:40:41,929 02603cc9 MainThread netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@146.148.81.46 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile /tmp/pkb/netperf-2.6.0/src/netperf -p 20000 -j -t TCP_RR -H 10.0.0.3 -l 60   -- -P 20001 -o THROUGHPUT,THROUGHPUT_UNITS,P50_LATENCY,P90_LATENCY,P99_LATENCY,STDDEV_LATENCY,CONFIDENCE_ITERATION,THROUGHPUT_CONFID
+2016-04-11 14:41:43,168 02603cc9 MainThread netperf(1/1) INFO     Ran ssh -A -p 22 perfkit@146.148.81.46 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile /tmp/pkb/netperf-2.6.0/src/netperf -p 20000 -j -t TCP_RR -H 10.0.0.3 -l 60   -- -P 20001 -o THROUGHPUT,THROUGHPUT_UNITS,P50_LATENCY,P90_LATENCY,P99_LATENCY,STDDEV_LATENCY,CONFIDENCE_ITERATION,THROUGHPUT_CONFID. Got return code (0).
+STDOUT: MIGRATED TCP REQUEST/RESPONSE TEST from 0.0.0.0 (0.0.0.0) port 20001 AF_INET to 10.0.0.3 () port 20001 AF_INET : first burst 0
+Throughput,Throughput Units,50th Percentile Latency Microseconds,90th Percentile Latency Microseconds,99th Percentile Latency Microseconds,Stddev Latency Microseconds,Confidence Iterations Run,Throughput Confidence Width (%)
+4394.63,Trans/s,212,280,451,106.81,1,-1.000
+
+STDERR: Warning: Permanently added '146.148.81.46' (ECDSA) to the list of known hosts.
+
+2016-04-11 14:41:43,169 02603cc9 MainThread netperf(1/1) INFO     Netperf Results: {'Confidence Iterations Run': '1', 'Throughput Confidence Width (%)': '-1.000', '99th Percentile Latency Microseconds': '451', '50th Percentile Latency Microseconds': '212', 'Throughput': '4394.63', 'Stddev Latency Microseconds': '106.81', 'Throughput Units': 'Trans/s', '90th Percentile Latency Microseconds': '280'}
+2016-04-11 14:41:43,170 02603cc9 MainThread netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@146.148.81.46 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile /tmp/pkb/netperf-2.6.0/src/netperf -p 20000 -j -t TCP_CRR -H 104.197.254.171 -l 60   -- -P 20001 -o THROUGHPUT,THROUGHPUT_UNITS,P50_LATENCY,P90_LATENCY,P99_LATENCY,STDDEV_LATENCY,CONFIDENCE_ITERATION,THROUGHPUT_CONFID
+2016-04-11 14:42:48,286 02603cc9 MainThread netperf(1/1) INFO     Ran ssh -A -p 22 perfkit@146.148.81.46 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile /tmp/pkb/netperf-2.6.0/src/netperf -p 20000 -j -t TCP_CRR -H 104.197.254.171 -l 60   -- -P 20001 -o THROUGHPUT,THROUGHPUT_UNITS,P50_LATENCY,P90_LATENCY,P99_LATENCY,STDDEV_LATENCY,CONFIDENCE_ITERATION,THROUGHPUT_CONFID. Got return code (0).
+STDOUT: MIGRATED TCP Connect/Request/Response TEST from 0.0.0.0 (0.0.0.0) port 20001 AF_INET to 104.197.254.171 () port 20001 AF_INET
+Throughput,Throughput Units,50th Percentile Latency Microseconds,90th Percentile Latency Microseconds,99th Percentile Latency Microseconds,Stddev Latency Microseconds,Confidence Iterations Run,Throughput Confidence Width (%)
+736.78,Trans/s,1310,1549,2319,323.41,1,-1.000
+
+STDERR: Warning: Permanently added '146.148.81.46' (ECDSA) to the list of known hosts.
+
+2016-04-11 14:42:48,287 02603cc9 MainThread netperf(1/1) INFO     Netperf Results: {'Confidence Iterations Run': '1', 'Throughput Confidence Width (%)': '-1.000', '99th Percentile Latency Microseconds': '2319', '50th Percentile Latency Microseconds': '1310', 'Throughput': '736.78', 'Stddev Latency Microseconds': '323.41', 'Throughput Units': 'Trans/s', '90th Percentile Latency Microseconds': '1549'}
+2016-04-11 14:42:48,287 02603cc9 MainThread netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@146.148.81.46 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile /tmp/pkb/netperf-2.6.0/src/netperf -p 20000 -j -t TCP_CRR -H 10.0.0.3 -l 60   -- -P 20001 -o THROUGHPUT,THROUGHPUT_UNITS,P50_LATENCY,P90_LATENCY,P99_LATENCY,STDDEV_LATENCY,CONFIDENCE_ITERATION,THROUGHPUT_CONFID
+2016-04-11 14:43:53,414 02603cc9 MainThread netperf(1/1) INFO     Ran ssh -A -p 22 perfkit@146.148.81.46 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile /tmp/pkb/netperf-2.6.0/src/netperf -p 20000 -j -t TCP_CRR -H 10.0.0.3 -l 60   -- -P 20001 -o THROUGHPUT,THROUGHPUT_UNITS,P50_LATENCY,P90_LATENCY,P99_LATENCY,STDDEV_LATENCY,CONFIDENCE_ITERATION,THROUGHPUT_CONFID. Got return code (0).
+STDOUT: MIGRATED TCP Connect/Request/Response TEST from 0.0.0.0 (0.0.0.0) port 20001 AF_INET to 10.0.0.3 () port 20001 AF_INET
+Throughput,Throughput Units,50th Percentile Latency Microseconds,90th Percentile Latency Microseconds,99th Percentile Latency Microseconds,Stddev Latency Microseconds,Confidence Iterations Run,Throughput Confidence Width (%)
+2091.80,Trans/s,449,590,931,177.83,1,-1.000
+
+STDERR: Warning: Permanently added '146.148.81.46' (ECDSA) to the list of known hosts.
+
+2016-04-11 14:43:53,415 02603cc9 MainThread netperf(1/1) INFO     Netperf Results: {'Confidence Iterations Run': '1', 'Throughput Confidence Width (%)': '-1.000', '99th Percentile Latency Microseconds': '931', '50th Percentile Latency Microseconds': '449', 'Throughput': '2091.80', 'Stddev Latency Microseconds': '177.83', 'Throughput Units': 'Trans/s', '90th Percentile Latency Microseconds': '590'}
+2016-04-11 14:43:53,415 02603cc9 MainThread netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@146.148.81.46 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile /tmp/pkb/netperf-2.6.0/src/netperf -p 20000 -j -t TCP_STREAM -H 104.197.254.171 -l 60   -- -P 20001 -o THROUGHPUT,THROUGHPUT_UNITS,P50_LATENCY,P90_LATENCY,P99_LATENCY,STDDEV_LATENCY,CONFIDENCE_ITERATION,THROUGHPUT_CONFID
+2016-04-11 14:44:54,548 02603cc9 MainThread netperf(1/1) INFO     Ran ssh -A -p 22 perfkit@146.148.81.46 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile /tmp/pkb/netperf-2.6.0/src/netperf -p 20000 -j -t TCP_STREAM -H 104.197.254.171 -l 60   -- -P 20001 -o THROUGHPUT,THROUGHPUT_UNITS,P50_LATENCY,P90_LATENCY,P99_LATENCY,STDDEV_LATENCY,CONFIDENCE_ITERATION,THROUGHPUT_CONFID. Got return code (0).
+STDOUT: MIGRATED TCP STREAM TEST from 0.0.0.0 (0.0.0.0) port 20001 AF_INET to 104.197.254.171 () port 20001 AF_INET
+Throughput,Throughput Units,50th Percentile Latency Microseconds,90th Percentile Latency Microseconds,99th Percentile Latency Microseconds,Stddev Latency Microseconds,Confidence Iterations Run,Throughput Confidence Width (%)
+943.87,10^6bits/s,3,4,1233,1449.62,1,-1.000
+
+STDERR: Warning: Permanently added '146.148.81.46' (ECDSA) to the list of known hosts.
+
+2016-04-11 14:44:54,549 02603cc9 MainThread netperf(1/1) INFO     Netperf Results: {'Confidence Iterations Run': '1', 'Throughput Confidence Width (%)': '-1.000', '99th Percentile Latency Microseconds': '1233', '50th Percentile Latency Microseconds': '3', 'Throughput': '943.87', 'Stddev Latency Microseconds': '1449.62', 'Throughput Units': '10^6bits/s', '90th Percentile Latency Microseconds': '4'}
+2016-04-11 14:44:54,550 02603cc9 MainThread netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@146.148.81.46 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile /tmp/pkb/netperf-2.6.0/src/netperf -p 20000 -j -t TCP_STREAM -H 10.0.0.3 -l 60   -- -P 20001 -o THROUGHPUT,THROUGHPUT_UNITS,P50_LATENCY,P90_LATENCY,P99_LATENCY,STDDEV_LATENCY,CONFIDENCE_ITERATION,THROUGHPUT_CONFID
+2016-04-11 14:45:55,683 02603cc9 MainThread netperf(1/1) INFO     Ran ssh -A -p 22 perfkit@146.148.81.46 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile /tmp/pkb/netperf-2.6.0/src/netperf -p 20000 -j -t TCP_STREAM -H 10.0.0.3 -l 60   -- -P 20001 -o THROUGHPUT,THROUGHPUT_UNITS,P50_LATENCY,P90_LATENCY,P99_LATENCY,STDDEV_LATENCY,CONFIDENCE_ITERATION,THROUGHPUT_CONFID. Got return code (0).
+STDOUT: MIGRATED TCP STREAM TEST from 0.0.0.0 (0.0.0.0) port 20001 AF_INET to 10.0.0.3 () port 20001 AF_INET
+Throughput,Throughput Units,50th Percentile Latency Microseconds,90th Percentile Latency Microseconds,99th Percentile Latency Microseconds,Stddev Latency Microseconds,Confidence Iterations Run,Throughput Confidence Width (%)
+998.97,10^6bits/s,3,4,35,1669.53,1,-1.000
+
+STDERR: Warning: Permanently added '146.148.81.46' (ECDSA) to the list of known hosts.
+
+2016-04-11 14:45:55,684 02603cc9 MainThread netperf(1/1) INFO     Netperf Results: {'Confidence Iterations Run': '1', 'Throughput Confidence Width (%)': '-1.000', '99th Percentile Latency Microseconds': '35', '50th Percentile Latency Microseconds': '3', 'Throughput': '998.97', 'Stddev Latency Microseconds': '1669.53', 'Throughput Units': '10^6bits/s', '90th Percentile Latency Microseconds': '4'}
+2016-04-11 14:45:55,684 02603cc9 MainThread netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@146.148.81.46 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile /tmp/pkb/netperf-2.6.0/src/netperf -p 20000 -j -t UDP_RR -H 104.197.254.171 -l 60   -- -P 20001 -o THROUGHPUT,THROUGHPUT_UNITS,P50_LATENCY,P90_LATENCY,P99_LATENCY,STDDEV_LATENCY,CONFIDENCE_ITERATION,THROUGHPUT_CONFID
+2016-04-11 14:46:56,819 02603cc9 MainThread netperf(1/1) INFO     Ran ssh -A -p 22 perfkit@146.148.81.46 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile /tmp/pkb/netperf-2.6.0/src/netperf -p 20000 -j -t UDP_RR -H 104.197.254.171 -l 60   -- -P 20001 -o THROUGHPUT,THROUGHPUT_UNITS,P50_LATENCY,P90_LATENCY,P99_LATENCY,STDDEV_LATENCY,CONFIDENCE_ITERATION,THROUGHPUT_CONFID. Got return code (0).
+STDOUT: MIGRATED UDP REQUEST/RESPONSE TEST from 0.0.0.0 (0.0.0.0) port 20001 AF_INET to 104.197.254.171 () port 20001 AF_INET : first burst 0
+Throughput,Throughput Units,50th Percentile Latency Microseconds,90th Percentile Latency Microseconds,99th Percentile Latency Microseconds,Stddev Latency Microseconds,Confidence Iterations Run,Throughput Confidence Width (%)
+2165.83,Trans/s,450,516,682,82.52,1,-1.000
+
+STDERR: Warning: Permanently added '146.148.81.46' (ECDSA) to the list of known hosts.
+
+2016-04-11 14:46:56,820 02603cc9 MainThread netperf(1/1) INFO     Netperf Results: {'Confidence Iterations Run': '1', 'Throughput Confidence Width (%)': '-1.000', '99th Percentile Latency Microseconds': '682', '50th Percentile Latency Microseconds': '450', 'Throughput': '2165.83', 'Stddev Latency Microseconds': '82.52', 'Throughput Units': 'Trans/s', '90th Percentile Latency Microseconds': '516'}
+2016-04-11 14:46:56,820 02603cc9 MainThread netperf(1/1) INFO     Running: ssh -A -p 22 perfkit@146.148.81.46 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile /tmp/pkb/netperf-2.6.0/src/netperf -p 20000 -j -t UDP_RR -H 10.0.0.3 -l 60   -- -P 20001 -o THROUGHPUT,THROUGHPUT_UNITS,P50_LATENCY,P90_LATENCY,P99_LATENCY,STDDEV_LATENCY,CONFIDENCE_ITERATION,THROUGHPUT_CONFID
+2016-04-11 14:47:57,761 02603cc9 MainThread netperf(1/1) INFO     Ran ssh -A -p 22 perfkit@146.148.81.46 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_keyfile /tmp/pkb/netperf-2.6.0/src/netperf -p 20000 -j -t UDP_RR -H 10.0.0.3 -l 60   -- -P 20001 -o THROUGHPUT,THROUGHPUT_UNITS,P50_LATENCY,P90_LATENCY,P99_LATENCY,STDDEV_LATENCY,CONFIDENCE_ITERATION,THROUGHPUT_CONFID. Got return code (0).
+STDOUT: MIGRATED UDP REQUEST/RESPONSE TEST from 0.0.0.0 (0.0.0.0) port 20001 AF_INET to 10.0.0.3 () port 20001 AF_INET : first burst 0
+Throughput,Throughput Units,50th Percentile Latency Microseconds,90th Percentile Latency Microseconds,99th Percentile Latency Microseconds,Stddev Latency Microseconds,Confidence Iterations Run,Throughput Confidence Width (%)
+4702.70,Trans/s,200,259,409,77.75,1,-1.000
+
+STDERR: Warning: Permanently added '146.148.81.46' (ECDSA) to the list of known hosts.
+
+2016-04-11 14:47:57,762 02603cc9 MainThread netperf(1/1) INFO     Netperf Results: {'Confidence Iterations Run': '1', 'Throughput Confidence Width (%)': '-1.000', '99th Percentile Latency Microseconds': '409', '50th Percentile Latency Microseconds': '200', 'Throughput': '4702.70', 'Stddev Latency Microseconds': '77.75', 'Throughput Units': 'Trans/s', '90th Percentile Latency Microseconds': '259'}
+2016-04-11 14:47:57,767 02603cc9 MainThread netperf(1/1) INFO     Cleaning up benchmark netperf
+2016-04-11 14:47:57,767 02603cc9 MainThread netperf(1/1) INFO     Tearing down resources for benchmark netperf
+2016-04-11 14:47:57,768 02603cc9 Thread-76 netperf(1/1) INFO     Running: gcloud compute instances delete pkb-02603cc9-0 --format json --quiet --project sage-potential-127001 --zone us-central1-a
+2016-04-11 14:47:57,768 02603cc9 Thread-77 netperf(1/1) INFO     Running: gcloud compute instances delete pkb-02603cc9-1 --format json --quiet --project sage-potential-127001 --zone us-central1-a
+2016-04-11 14:48:41,471 02603cc9 Thread-77 netperf(1/1) INFO     Running: gcloud compute instances describe pkb-02603cc9-1 --format json --quiet --project sage-potential-127001 --zone us-central1-a
+2016-04-11 14:48:41,472 02603cc9 Thread-76 netperf(1/1) INFO     Running: gcloud compute instances describe pkb-02603cc9-0 --format json --quiet --project sage-potential-127001 --zone us-central1-a
+2016-04-11 14:48:42,994 02603cc9 MainThread netperf(1/1) INFO     Running: gcloud compute firewall-rules delete perfkit-firewall-02603cc9-20001 --format json --quiet --project sage-potential-127001
+2016-04-11 14:49:40,526 02603cc9 MainThread netperf(1/1) INFO     Running: gcloud compute firewall-rules describe perfkit-firewall-02603cc9-20001 --format json --quiet --project sage-potential-127001
+2016-04-11 14:49:42,125 02603cc9 MainThread netperf(1/1) INFO     Running: gcloud compute firewall-rules delete perfkit-firewall-02603cc9-20000 --format json --quiet --project sage-potential-127001
+2016-04-11 14:50:01,182 02603cc9 MainThread netperf(1/1) INFO     Running: gcloud compute firewall-rules describe perfkit-firewall-02603cc9-20000 --format json --quiet --project sage-potential-127001
+2016-04-11 14:50:02,703 02603cc9 MainThread netperf(1/1) INFO     Running: gcloud compute firewall-rules delete perfkit-firewall-02603cc9-22 --format json --quiet --project sage-potential-127001
+2016-04-11 14:50:20,580 02603cc9 MainThread netperf(1/1) INFO     Running: gcloud compute firewall-rules describe perfkit-firewall-02603cc9-22 --format json --quiet --project sage-potential-127001
+2016-04-11 14:50:22,349 02603cc9 MainThread netperf(1/1) INFO     Running: gcloud compute firewall-rules delete default-internal-02603cc9 --format json --quiet --project sage-potential-127001
+2016-04-11 14:51:03,883 02603cc9 MainThread netperf(1/1) INFO     Running: gcloud compute firewall-rules describe default-internal-02603cc9 --format json --quiet --project sage-potential-127001
+2016-04-11 14:51:05,497 02603cc9 MainThread netperf(1/1) INFO     Running: gcloud compute networks delete pkb-network-02603cc9 --format json --quiet --project sage-potential-127001
+2016-04-11 14:51:38,856 02603cc9 MainThread netperf(1/1) INFO     Running: gcloud compute networks describe pkb-network-02603cc9 --format json --quiet --project sage-potential-127001
+2016-04-11 14:51:40,440 02603cc9 MainThread INFO     
+-------------------------PerfKitBenchmarker Complete Results-------------------------
+{'metadata': {'confidence_iter': '1',
+              'confidence_width_percent': '-1.000',
+              'ip_type': 'external',
+              'max_iter': 1,
+              'netperf_test_length': 60,
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'receiving_machine_type': 'f1-micro',
+              'receiving_zone': 'us-central1-a',
+              'sending_machine_type': 'f1-micro',
+              'sending_zone': 'us-central1-a',
+              'vm_1_cloud': 'GCP',
+              'vm_1_image': 'ubuntu-14-04',
+              'vm_1_machine_type': 'f1-micro',
+              'vm_1_vm_count': 1,
+              'vm_1_zone': 'us-central1-a',
+              'vm_2_cloud': 'GCP',
+              'vm_2_image': 'ubuntu-14-04',
+              'vm_2_machine_type': 'f1-micro',
+              'vm_2_vm_count': 1,
+              'vm_2_zone': 'us-central1-a'},
+ 'metric': 'TCP_RR_Transaction_Rate',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '64959ae7-5bbc-4671-b2f6-8263fbaa0e5c',
+ 'sample_uri': '8e773f6d-a4c2-4edd-b40a-217059785b07',
+ 'test': 'netperf',
+ 'timestamp': 1460400040.798472,
+ 'unit': 'transactions_per_second',
+ 'value': 2082.84}
+{'metadata': {'confidence_iter': '1',
+              'confidence_width_percent': '-1.000',
+              'ip_type': 'external',
+              'max_iter': 1,
+              'netperf_test_length': 60,
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'receiving_machine_type': 'f1-micro',
+              'receiving_zone': 'us-central1-a',
+              'sending_machine_type': 'f1-micro',
+              'sending_zone': 'us-central1-a',
+              'vm_1_cloud': 'GCP',
+              'vm_1_image': 'ubuntu-14-04',
+              'vm_1_machine_type': 'f1-micro',
+              'vm_1_vm_count': 1,
+              'vm_1_zone': 'us-central1-a',
+              'vm_2_cloud': 'GCP',
+              'vm_2_image': 'ubuntu-14-04',
+              'vm_2_machine_type': 'f1-micro',
+              'vm_2_vm_count': 1,
+              'vm_2_zone': 'us-central1-a'},
+ 'metric': 'TCP_RR_Latency_p50',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '64959ae7-5bbc-4671-b2f6-8263fbaa0e5c',
+ 'sample_uri': '6c9c83aa-e308-4d39-bc37-40128008c789',
+ 'test': 'netperf',
+ 'timestamp': 1460400040.798503,
+ 'unit': 'us',
+ 'value': 464.0}
+{'metadata': {'confidence_iter': '1',
+              'confidence_width_percent': '-1.000',
+              'ip_type': 'external',
+              'max_iter': 1,
+              'netperf_test_length': 60,
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'receiving_machine_type': 'f1-micro',
+              'receiving_zone': 'us-central1-a',
+              'sending_machine_type': 'f1-micro',
+              'sending_zone': 'us-central1-a',
+              'vm_1_cloud': 'GCP',
+              'vm_1_image': 'ubuntu-14-04',
+              'vm_1_machine_type': 'f1-micro',
+              'vm_1_vm_count': 1,
+              'vm_1_zone': 'us-central1-a',
+              'vm_2_cloud': 'GCP',
+              'vm_2_image': 'ubuntu-14-04',
+              'vm_2_machine_type': 'f1-micro',
+              'vm_2_vm_count': 1,
+              'vm_2_zone': 'us-central1-a'},
+ 'metric': 'TCP_RR_Latency_p90',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '64959ae7-5bbc-4671-b2f6-8263fbaa0e5c',
+ 'sample_uri': '728f38f3-83ea-40ec-bf5f-e8af27fe5781',
+ 'test': 'netperf',
+ 'timestamp': 1460400040.798509,
+ 'unit': 'us',
+ 'value': 537.0}
+{'metadata': {'confidence_iter': '1',
+              'confidence_width_percent': '-1.000',
+              'ip_type': 'external',
+              'max_iter': 1,
+              'netperf_test_length': 60,
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'receiving_machine_type': 'f1-micro',
+              'receiving_zone': 'us-central1-a',
+              'sending_machine_type': 'f1-micro',
+              'sending_zone': 'us-central1-a',
+              'vm_1_cloud': 'GCP',
+              'vm_1_image': 'ubuntu-14-04',
+              'vm_1_machine_type': 'f1-micro',
+              'vm_1_vm_count': 1,
+              'vm_1_zone': 'us-central1-a',
+              'vm_2_cloud': 'GCP',
+              'vm_2_image': 'ubuntu-14-04',
+              'vm_2_machine_type': 'f1-micro',
+              'vm_2_vm_count': 1,
+              'vm_2_zone': 'us-central1-a'},
+ 'metric': 'TCP_RR_Latency_p99',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '64959ae7-5bbc-4671-b2f6-8263fbaa0e5c',
+ 'sample_uri': '31c7ed62-4235-40af-b554-6e6db7867438',
+ 'test': 'netperf',
+ 'timestamp': 1460400040.798514,
+ 'unit': 'us',
+ 'value': 740.0}
+{'metadata': {'confidence_iter': '1',
+              'confidence_width_percent': '-1.000',
+              'ip_type': 'external',
+              'max_iter': 1,
+              'netperf_test_length': 60,
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'receiving_machine_type': 'f1-micro',
+              'receiving_zone': 'us-central1-a',
+              'sending_machine_type': 'f1-micro',
+              'sending_zone': 'us-central1-a',
+              'vm_1_cloud': 'GCP',
+              'vm_1_image': 'ubuntu-14-04',
+              'vm_1_machine_type': 'f1-micro',
+              'vm_1_vm_count': 1,
+              'vm_1_zone': 'us-central1-a',
+              'vm_2_cloud': 'GCP',
+              'vm_2_image': 'ubuntu-14-04',
+              'vm_2_machine_type': 'f1-micro',
+              'vm_2_vm_count': 1,
+              'vm_2_zone': 'us-central1-a'},
+ 'metric': 'TCP_RR_Latency_stddev',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '64959ae7-5bbc-4671-b2f6-8263fbaa0e5c',
+ 'sample_uri': 'ab78dd3a-b25a-41a2-a99c-ac5198c86b4f',
+ 'test': 'netperf',
+ 'timestamp': 1460400040.798518,
+ 'unit': 'us',
+ 'value': 157.18}
+{'metadata': {'confidence_iter': '1',
+              'confidence_width_percent': '-1.000',
+              'ip_type': 'internal',
+              'max_iter': 1,
+              'netperf_test_length': 60,
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'receiving_machine_type': 'f1-micro',
+              'receiving_zone': 'us-central1-a',
+              'sending_machine_type': 'f1-micro',
+              'sending_zone': 'us-central1-a',
+              'vm_1_cloud': 'GCP',
+              'vm_1_image': 'ubuntu-14-04',
+              'vm_1_machine_type': 'f1-micro',
+              'vm_1_vm_count': 1,
+              'vm_1_zone': 'us-central1-a',
+              'vm_2_cloud': 'GCP',
+              'vm_2_image': 'ubuntu-14-04',
+              'vm_2_machine_type': 'f1-micro',
+              'vm_2_vm_count': 1,
+              'vm_2_zone': 'us-central1-a'},
+ 'metric': 'TCP_RR_Transaction_Rate',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '64959ae7-5bbc-4671-b2f6-8263fbaa0e5c',
+ 'sample_uri': 'dbe7b61c-9ac8-4fde-af41-b8c344d08f91',
+ 'test': 'netperf',
+ 'timestamp': 1460400103.169692,
+ 'unit': 'transactions_per_second',
+ 'value': 4394.63}
+{'metadata': {'confidence_iter': '1',
+              'confidence_width_percent': '-1.000',
+              'ip_type': 'internal',
+              'max_iter': 1,
+              'netperf_test_length': 60,
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'receiving_machine_type': 'f1-micro',
+              'receiving_zone': 'us-central1-a',
+              'sending_machine_type': 'f1-micro',
+              'sending_zone': 'us-central1-a',
+              'vm_1_cloud': 'GCP',
+              'vm_1_image': 'ubuntu-14-04',
+              'vm_1_machine_type': 'f1-micro',
+              'vm_1_vm_count': 1,
+              'vm_1_zone': 'us-central1-a',
+              'vm_2_cloud': 'GCP',
+              'vm_2_image': 'ubuntu-14-04',
+              'vm_2_machine_type': 'f1-micro',
+              'vm_2_vm_count': 1,
+              'vm_2_zone': 'us-central1-a'},
+ 'metric': 'TCP_RR_Latency_p50',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '64959ae7-5bbc-4671-b2f6-8263fbaa0e5c',
+ 'sample_uri': '046daa89-dae1-4df2-a017-cfae1a092e79',
+ 'test': 'netperf',
+ 'timestamp': 1460400103.169722,
+ 'unit': 'us',
+ 'value': 212.0}
+{'metadata': {'confidence_iter': '1',
+              'confidence_width_percent': '-1.000',
+              'ip_type': 'internal',
+              'max_iter': 1,
+              'netperf_test_length': 60,
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'receiving_machine_type': 'f1-micro',
+              'receiving_zone': 'us-central1-a',
+              'sending_machine_type': 'f1-micro',
+              'sending_zone': 'us-central1-a',
+              'vm_1_cloud': 'GCP',
+              'vm_1_image': 'ubuntu-14-04',
+              'vm_1_machine_type': 'f1-micro',
+              'vm_1_vm_count': 1,
+              'vm_1_zone': 'us-central1-a',
+              'vm_2_cloud': 'GCP',
+              'vm_2_image': 'ubuntu-14-04',
+              'vm_2_machine_type': 'f1-micro',
+              'vm_2_vm_count': 1,
+              'vm_2_zone': 'us-central1-a'},
+ 'metric': 'TCP_RR_Latency_p90',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '64959ae7-5bbc-4671-b2f6-8263fbaa0e5c',
+ 'sample_uri': '1a79988c-e5a4-4206-832b-649a2330ffee',
+ 'test': 'netperf',
+ 'timestamp': 1460400103.169729,
+ 'unit': 'us',
+ 'value': 280.0}
+{'metadata': {'confidence_iter': '1',
+              'confidence_width_percent': '-1.000',
+              'ip_type': 'internal',
+              'max_iter': 1,
+              'netperf_test_length': 60,
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'receiving_machine_type': 'f1-micro',
+              'receiving_zone': 'us-central1-a',
+              'sending_machine_type': 'f1-micro',
+              'sending_zone': 'us-central1-a',
+              'vm_1_cloud': 'GCP',
+              'vm_1_image': 'ubuntu-14-04',
+              'vm_1_machine_type': 'f1-micro',
+              'vm_1_vm_count': 1,
+              'vm_1_zone': 'us-central1-a',
+              'vm_2_cloud': 'GCP',
+              'vm_2_image': 'ubuntu-14-04',
+              'vm_2_machine_type': 'f1-micro',
+              'vm_2_vm_count': 1,
+              'vm_2_zone': 'us-central1-a'},
+ 'metric': 'TCP_RR_Latency_p99',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '64959ae7-5bbc-4671-b2f6-8263fbaa0e5c',
+ 'sample_uri': '6e1fedba-2754-435d-9a72-c5385d843c48',
+ 'test': 'netperf',
+ 'timestamp': 1460400103.169733,
+ 'unit': 'us',
+ 'value': 451.0}
+{'metadata': {'confidence_iter': '1',
+              'confidence_width_percent': '-1.000',
+              'ip_type': 'internal',
+              'max_iter': 1,
+              'netperf_test_length': 60,
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'receiving_machine_type': 'f1-micro',
+              'receiving_zone': 'us-central1-a',
+              'sending_machine_type': 'f1-micro',
+              'sending_zone': 'us-central1-a',
+              'vm_1_cloud': 'GCP',
+              'vm_1_image': 'ubuntu-14-04',
+              'vm_1_machine_type': 'f1-micro',
+              'vm_1_vm_count': 1,
+              'vm_1_zone': 'us-central1-a',
+              'vm_2_cloud': 'GCP',
+              'vm_2_image': 'ubuntu-14-04',
+              'vm_2_machine_type': 'f1-micro',
+              'vm_2_vm_count': 1,
+              'vm_2_zone': 'us-central1-a'},
+ 'metric': 'TCP_RR_Latency_stddev',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '64959ae7-5bbc-4671-b2f6-8263fbaa0e5c',
+ 'sample_uri': 'bc6a1174-effe-4c9f-a216-d3fccad642db',
+ 'test': 'netperf',
+ 'timestamp': 1460400103.169737,
+ 'unit': 'us',
+ 'value': 106.81}
+{'metadata': {'confidence_iter': '1',
+              'confidence_width_percent': '-1.000',
+              'ip_type': 'external',
+              'max_iter': 1,
+              'netperf_test_length': 60,
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'receiving_machine_type': 'f1-micro',
+              'receiving_zone': 'us-central1-a',
+              'sending_machine_type': 'f1-micro',
+              'sending_zone': 'us-central1-a',
+              'vm_1_cloud': 'GCP',
+              'vm_1_image': 'ubuntu-14-04',
+              'vm_1_machine_type': 'f1-micro',
+              'vm_1_vm_count': 1,
+              'vm_1_zone': 'us-central1-a',
+              'vm_2_cloud': 'GCP',
+              'vm_2_image': 'ubuntu-14-04',
+              'vm_2_machine_type': 'f1-micro',
+              'vm_2_vm_count': 1,
+              'vm_2_zone': 'us-central1-a'},
+ 'metric': 'TCP_CRR_Transaction_Rate',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '64959ae7-5bbc-4671-b2f6-8263fbaa0e5c',
+ 'sample_uri': 'bec26c3b-870b-44f9-b168-40d3632d21e6',
+ 'test': 'netperf',
+ 'timestamp': 1460400168.287645,
+ 'unit': 'transactions_per_second',
+ 'value': 736.78}
+{'metadata': {'confidence_iter': '1',
+              'confidence_width_percent': '-1.000',
+              'ip_type': 'external',
+              'max_iter': 1,
+              'netperf_test_length': 60,
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'receiving_machine_type': 'f1-micro',
+              'receiving_zone': 'us-central1-a',
+              'sending_machine_type': 'f1-micro',
+              'sending_zone': 'us-central1-a',
+              'vm_1_cloud': 'GCP',
+              'vm_1_image': 'ubuntu-14-04',
+              'vm_1_machine_type': 'f1-micro',
+              'vm_1_vm_count': 1,
+              'vm_1_zone': 'us-central1-a',
+              'vm_2_cloud': 'GCP',
+              'vm_2_image': 'ubuntu-14-04',
+              'vm_2_machine_type': 'f1-micro',
+              'vm_2_vm_count': 1,
+              'vm_2_zone': 'us-central1-a'},
+ 'metric': 'TCP_CRR_Latency_p50',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '64959ae7-5bbc-4671-b2f6-8263fbaa0e5c',
+ 'sample_uri': 'b5036dd5-8e75-475c-9b3c-4197db1be881',
+ 'test': 'netperf',
+ 'timestamp': 1460400168.287663,
+ 'unit': 'us',
+ 'value': 1310.0}
+{'metadata': {'confidence_iter': '1',
+              'confidence_width_percent': '-1.000',
+              'ip_type': 'external',
+              'max_iter': 1,
+              'netperf_test_length': 60,
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'receiving_machine_type': 'f1-micro',
+              'receiving_zone': 'us-central1-a',
+              'sending_machine_type': 'f1-micro',
+              'sending_zone': 'us-central1-a',
+              'vm_1_cloud': 'GCP',
+              'vm_1_image': 'ubuntu-14-04',
+              'vm_1_machine_type': 'f1-micro',
+              'vm_1_vm_count': 1,
+              'vm_1_zone': 'us-central1-a',
+              'vm_2_cloud': 'GCP',
+              'vm_2_image': 'ubuntu-14-04',
+              'vm_2_machine_type': 'f1-micro',
+              'vm_2_vm_count': 1,
+              'vm_2_zone': 'us-central1-a'},
+ 'metric': 'TCP_CRR_Latency_p90',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '64959ae7-5bbc-4671-b2f6-8263fbaa0e5c',
+ 'sample_uri': '54318c4b-5679-4f5f-807a-bc67bac82db2',
+ 'test': 'netperf',
+ 'timestamp': 1460400168.287668,
+ 'unit': 'us',
+ 'value': 1549.0}
+{'metadata': {'confidence_iter': '1',
+              'confidence_width_percent': '-1.000',
+              'ip_type': 'external',
+              'max_iter': 1,
+              'netperf_test_length': 60,
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'receiving_machine_type': 'f1-micro',
+              'receiving_zone': 'us-central1-a',
+              'sending_machine_type': 'f1-micro',
+              'sending_zone': 'us-central1-a',
+              'vm_1_cloud': 'GCP',
+              'vm_1_image': 'ubuntu-14-04',
+              'vm_1_machine_type': 'f1-micro',
+              'vm_1_vm_count': 1,
+              'vm_1_zone': 'us-central1-a',
+              'vm_2_cloud': 'GCP',
+              'vm_2_image': 'ubuntu-14-04',
+              'vm_2_machine_type': 'f1-micro',
+              'vm_2_vm_count': 1,
+              'vm_2_zone': 'us-central1-a'},
+ 'metric': 'TCP_CRR_Latency_p99',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '64959ae7-5bbc-4671-b2f6-8263fbaa0e5c',
+ 'sample_uri': 'bfb43efc-b036-4b76-a3c6-40368aa5a64a',
+ 'test': 'netperf',
+ 'timestamp': 1460400168.28767,
+ 'unit': 'us',
+ 'value': 2319.0}
+{'metadata': {'confidence_iter': '1',
+              'confidence_width_percent': '-1.000',
+              'ip_type': 'external',
+              'max_iter': 1,
+              'netperf_test_length': 60,
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'receiving_machine_type': 'f1-micro',
+              'receiving_zone': 'us-central1-a',
+              'sending_machine_type': 'f1-micro',
+              'sending_zone': 'us-central1-a',
+              'vm_1_cloud': 'GCP',
+              'vm_1_image': 'ubuntu-14-04',
+              'vm_1_machine_type': 'f1-micro',
+              'vm_1_vm_count': 1,
+              'vm_1_zone': 'us-central1-a',
+              'vm_2_cloud': 'GCP',
+              'vm_2_image': 'ubuntu-14-04',
+              'vm_2_machine_type': 'f1-micro',
+              'vm_2_vm_count': 1,
+              'vm_2_zone': 'us-central1-a'},
+ 'metric': 'TCP_CRR_Latency_stddev',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '64959ae7-5bbc-4671-b2f6-8263fbaa0e5c',
+ 'sample_uri': '2325afdf-a9d1-4ecd-aedf-a82b55abf7f6',
+ 'test': 'netperf',
+ 'timestamp': 1460400168.287672,
+ 'unit': 'us',
+ 'value': 323.41}
+{'metadata': {'confidence_iter': '1',
+              'confidence_width_percent': '-1.000',
+              'ip_type': 'internal',
+              'max_iter': 1,
+              'netperf_test_length': 60,
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'receiving_machine_type': 'f1-micro',
+              'receiving_zone': 'us-central1-a',
+              'sending_machine_type': 'f1-micro',
+              'sending_zone': 'us-central1-a',
+              'vm_1_cloud': 'GCP',
+              'vm_1_image': 'ubuntu-14-04',
+              'vm_1_machine_type': 'f1-micro',
+              'vm_1_vm_count': 1,
+              'vm_1_zone': 'us-central1-a',
+              'vm_2_cloud': 'GCP',
+              'vm_2_image': 'ubuntu-14-04',
+              'vm_2_machine_type': 'f1-micro',
+              'vm_2_vm_count': 1,
+              'vm_2_zone': 'us-central1-a'},
+ 'metric': 'TCP_CRR_Transaction_Rate',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '64959ae7-5bbc-4671-b2f6-8263fbaa0e5c',
+ 'sample_uri': '6c10f28c-aaf8-448b-bdad-96efa8ed8532',
+ 'test': 'netperf',
+ 'timestamp': 1460400233.415573,
+ 'unit': 'transactions_per_second',
+ 'value': 2091.8}
+{'metadata': {'confidence_iter': '1',
+              'confidence_width_percent': '-1.000',
+              'ip_type': 'internal',
+              'max_iter': 1,
+              'netperf_test_length': 60,
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'receiving_machine_type': 'f1-micro',
+              'receiving_zone': 'us-central1-a',
+              'sending_machine_type': 'f1-micro',
+              'sending_zone': 'us-central1-a',
+              'vm_1_cloud': 'GCP',
+              'vm_1_image': 'ubuntu-14-04',
+              'vm_1_machine_type': 'f1-micro',
+              'vm_1_vm_count': 1,
+              'vm_1_zone': 'us-central1-a',
+              'vm_2_cloud': 'GCP',
+              'vm_2_image': 'ubuntu-14-04',
+              'vm_2_machine_type': 'f1-micro',
+              'vm_2_vm_count': 1,
+              'vm_2_zone': 'us-central1-a'},
+ 'metric': 'TCP_CRR_Latency_p50',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '64959ae7-5bbc-4671-b2f6-8263fbaa0e5c',
+ 'sample_uri': '72ecdddf-bfc1-4fe9-ba3c-88b564b5cf8f',
+ 'test': 'netperf',
+ 'timestamp': 1460400233.415595,
+ 'unit': 'us',
+ 'value': 449.0}
+{'metadata': {'confidence_iter': '1',
+              'confidence_width_percent': '-1.000',
+              'ip_type': 'internal',
+              'max_iter': 1,
+              'netperf_test_length': 60,
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'receiving_machine_type': 'f1-micro',
+              'receiving_zone': 'us-central1-a',
+              'sending_machine_type': 'f1-micro',
+              'sending_zone': 'us-central1-a',
+              'vm_1_cloud': 'GCP',
+              'vm_1_image': 'ubuntu-14-04',
+              'vm_1_machine_type': 'f1-micro',
+              'vm_1_vm_count': 1,
+              'vm_1_zone': 'us-central1-a',
+              'vm_2_cloud': 'GCP',
+              'vm_2_image': 'ubuntu-14-04',
+              'vm_2_machine_type': 'f1-micro',
+              'vm_2_vm_count': 1,
+              'vm_2_zone': 'us-central1-a'},
+ 'metric': 'TCP_CRR_Latency_p90',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '64959ae7-5bbc-4671-b2f6-8263fbaa0e5c',
+ 'sample_uri': 'f4639c65-af0a-40af-b215-b3353102c258',
+ 'test': 'netperf',
+ 'timestamp': 1460400233.415599,
+ 'unit': 'us',
+ 'value': 590.0}
+{'metadata': {'confidence_iter': '1',
+              'confidence_width_percent': '-1.000',
+              'ip_type': 'internal',
+              'max_iter': 1,
+              'netperf_test_length': 60,
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'receiving_machine_type': 'f1-micro',
+              'receiving_zone': 'us-central1-a',
+              'sending_machine_type': 'f1-micro',
+              'sending_zone': 'us-central1-a',
+              'vm_1_cloud': 'GCP',
+              'vm_1_image': 'ubuntu-14-04',
+              'vm_1_machine_type': 'f1-micro',
+              'vm_1_vm_count': 1,
+              'vm_1_zone': 'us-central1-a',
+              'vm_2_cloud': 'GCP',
+              'vm_2_image': 'ubuntu-14-04',
+              'vm_2_machine_type': 'f1-micro',
+              'vm_2_vm_count': 1,
+              'vm_2_zone': 'us-central1-a'},
+ 'metric': 'TCP_CRR_Latency_p99',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '64959ae7-5bbc-4671-b2f6-8263fbaa0e5c',
+ 'sample_uri': '43145dcc-233f-400b-b8d4-5235f3aab71a',
+ 'test': 'netperf',
+ 'timestamp': 1460400233.415602,
+ 'unit': 'us',
+ 'value': 931.0}
+{'metadata': {'confidence_iter': '1',
+              'confidence_width_percent': '-1.000',
+              'ip_type': 'internal',
+              'max_iter': 1,
+              'netperf_test_length': 60,
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'receiving_machine_type': 'f1-micro',
+              'receiving_zone': 'us-central1-a',
+              'sending_machine_type': 'f1-micro',
+              'sending_zone': 'us-central1-a',
+              'vm_1_cloud': 'GCP',
+              'vm_1_image': 'ubuntu-14-04',
+              'vm_1_machine_type': 'f1-micro',
+              'vm_1_vm_count': 1,
+              'vm_1_zone': 'us-central1-a',
+              'vm_2_cloud': 'GCP',
+              'vm_2_image': 'ubuntu-14-04',
+              'vm_2_machine_type': 'f1-micro',
+              'vm_2_vm_count': 1,
+              'vm_2_zone': 'us-central1-a'},
+ 'metric': 'TCP_CRR_Latency_stddev',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '64959ae7-5bbc-4671-b2f6-8263fbaa0e5c',
+ 'sample_uri': 'ea8985ed-786c-495f-a125-03d84a34ff35',
+ 'test': 'netperf',
+ 'timestamp': 1460400233.415604,
+ 'unit': 'us',
+ 'value': 177.83}
+{'metadata': {'confidence_iter': '1',
+              'confidence_width_percent': '-1.000',
+              'ip_type': 'external',
+              'max_iter': 1,
+              'netperf_test_length': 60,
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'receiving_machine_type': 'f1-micro',
+              'receiving_zone': 'us-central1-a',
+              'sending_machine_type': 'f1-micro',
+              'sending_zone': 'us-central1-a',
+              'vm_1_cloud': 'GCP',
+              'vm_1_image': 'ubuntu-14-04',
+              'vm_1_machine_type': 'f1-micro',
+              'vm_1_vm_count': 1,
+              'vm_1_zone': 'us-central1-a',
+              'vm_2_cloud': 'GCP',
+              'vm_2_image': 'ubuntu-14-04',
+              'vm_2_machine_type': 'f1-micro',
+              'vm_2_vm_count': 1,
+              'vm_2_zone': 'us-central1-a'},
+ 'metric': 'TCP_STREAM_Throughput',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '64959ae7-5bbc-4671-b2f6-8263fbaa0e5c',
+ 'sample_uri': 'fecb49fd-1ba7-47cd-9503-db82f5e2e129',
+ 'test': 'netperf',
+ 'timestamp': 1460400294.550119,
+ 'unit': 'Mbits/sec',
+ 'value': 943.87}
+{'metadata': {'confidence_iter': '1',
+              'confidence_width_percent': '-1.000',
+              'ip_type': 'internal',
+              'max_iter': 1,
+              'netperf_test_length': 60,
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'receiving_machine_type': 'f1-micro',
+              'receiving_zone': 'us-central1-a',
+              'sending_machine_type': 'f1-micro',
+              'sending_zone': 'us-central1-a',
+              'vm_1_cloud': 'GCP',
+              'vm_1_image': 'ubuntu-14-04',
+              'vm_1_machine_type': 'f1-micro',
+              'vm_1_vm_count': 1,
+              'vm_1_zone': 'us-central1-a',
+              'vm_2_cloud': 'GCP',
+              'vm_2_image': 'ubuntu-14-04',
+              'vm_2_machine_type': 'f1-micro',
+              'vm_2_vm_count': 1,
+              'vm_2_zone': 'us-central1-a'},
+ 'metric': 'TCP_STREAM_Throughput',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '64959ae7-5bbc-4671-b2f6-8263fbaa0e5c',
+ 'sample_uri': 'a0eb0097-77f5-40e5-b223-645d01f52db6',
+ 'test': 'netperf',
+ 'timestamp': 1460400355.684452,
+ 'unit': 'Mbits/sec',
+ 'value': 998.97}
+{'metadata': {'confidence_iter': '1',
+              'confidence_width_percent': '-1.000',
+              'ip_type': 'external',
+              'max_iter': 1,
+              'netperf_test_length': 60,
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'receiving_machine_type': 'f1-micro',
+              'receiving_zone': 'us-central1-a',
+              'sending_machine_type': 'f1-micro',
+              'sending_zone': 'us-central1-a',
+              'vm_1_cloud': 'GCP',
+              'vm_1_image': 'ubuntu-14-04',
+              'vm_1_machine_type': 'f1-micro',
+              'vm_1_vm_count': 1,
+              'vm_1_zone': 'us-central1-a',
+              'vm_2_cloud': 'GCP',
+              'vm_2_image': 'ubuntu-14-04',
+              'vm_2_machine_type': 'f1-micro',
+              'vm_2_vm_count': 1,
+              'vm_2_zone': 'us-central1-a'},
+ 'metric': 'UDP_RR_Transaction_Rate',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '64959ae7-5bbc-4671-b2f6-8263fbaa0e5c',
+ 'sample_uri': '75677549-3e52-4b5c-9c96-e1072aa5629a',
+ 'test': 'netperf',
+ 'timestamp': 1460400416.820651,
+ 'unit': 'transactions_per_second',
+ 'value': 2165.83}
+{'metadata': {'confidence_iter': '1',
+              'confidence_width_percent': '-1.000',
+              'ip_type': 'external',
+              'max_iter': 1,
+              'netperf_test_length': 60,
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'receiving_machine_type': 'f1-micro',
+              'receiving_zone': 'us-central1-a',
+              'sending_machine_type': 'f1-micro',
+              'sending_zone': 'us-central1-a',
+              'vm_1_cloud': 'GCP',
+              'vm_1_image': 'ubuntu-14-04',
+              'vm_1_machine_type': 'f1-micro',
+              'vm_1_vm_count': 1,
+              'vm_1_zone': 'us-central1-a',
+              'vm_2_cloud': 'GCP',
+              'vm_2_image': 'ubuntu-14-04',
+              'vm_2_machine_type': 'f1-micro',
+              'vm_2_vm_count': 1,
+              'vm_2_zone': 'us-central1-a'},
+ 'metric': 'UDP_RR_Latency_p50',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '64959ae7-5bbc-4671-b2f6-8263fbaa0e5c',
+ 'sample_uri': 'bc5606f0-c02e-40ee-981f-99fe23ecb8e1',
+ 'test': 'netperf',
+ 'timestamp': 1460400416.820677,
+ 'unit': 'us',
+ 'value': 450.0}
+{'metadata': {'confidence_iter': '1',
+              'confidence_width_percent': '-1.000',
+              'ip_type': 'external',
+              'max_iter': 1,
+              'netperf_test_length': 60,
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'receiving_machine_type': 'f1-micro',
+              'receiving_zone': 'us-central1-a',
+              'sending_machine_type': 'f1-micro',
+              'sending_zone': 'us-central1-a',
+              'vm_1_cloud': 'GCP',
+              'vm_1_image': 'ubuntu-14-04',
+              'vm_1_machine_type': 'f1-micro',
+              'vm_1_vm_count': 1,
+              'vm_1_zone': 'us-central1-a',
+              'vm_2_cloud': 'GCP',
+              'vm_2_image': 'ubuntu-14-04',
+              'vm_2_machine_type': 'f1-micro',
+              'vm_2_vm_count': 1,
+              'vm_2_zone': 'us-central1-a'},
+ 'metric': 'UDP_RR_Latency_p90',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '64959ae7-5bbc-4671-b2f6-8263fbaa0e5c',
+ 'sample_uri': '4da49b98-bcf5-4077-b52a-7e90ccaa1104',
+ 'test': 'netperf',
+ 'timestamp': 1460400416.820683,
+ 'unit': 'us',
+ 'value': 516.0}
+{'metadata': {'confidence_iter': '1',
+              'confidence_width_percent': '-1.000',
+              'ip_type': 'external',
+              'max_iter': 1,
+              'netperf_test_length': 60,
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'receiving_machine_type': 'f1-micro',
+              'receiving_zone': 'us-central1-a',
+              'sending_machine_type': 'f1-micro',
+              'sending_zone': 'us-central1-a',
+              'vm_1_cloud': 'GCP',
+              'vm_1_image': 'ubuntu-14-04',
+              'vm_1_machine_type': 'f1-micro',
+              'vm_1_vm_count': 1,
+              'vm_1_zone': 'us-central1-a',
+              'vm_2_cloud': 'GCP',
+              'vm_2_image': 'ubuntu-14-04',
+              'vm_2_machine_type': 'f1-micro',
+              'vm_2_vm_count': 1,
+              'vm_2_zone': 'us-central1-a'},
+ 'metric': 'UDP_RR_Latency_p99',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '64959ae7-5bbc-4671-b2f6-8263fbaa0e5c',
+ 'sample_uri': '8ac07728-c026-4b6a-aa40-2cd4eb9563fd',
+ 'test': 'netperf',
+ 'timestamp': 1460400416.820687,
+ 'unit': 'us',
+ 'value': 682.0}
+{'metadata': {'confidence_iter': '1',
+              'confidence_width_percent': '-1.000',
+              'ip_type': 'external',
+              'max_iter': 1,
+              'netperf_test_length': 60,
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'receiving_machine_type': 'f1-micro',
+              'receiving_zone': 'us-central1-a',
+              'sending_machine_type': 'f1-micro',
+              'sending_zone': 'us-central1-a',
+              'vm_1_cloud': 'GCP',
+              'vm_1_image': 'ubuntu-14-04',
+              'vm_1_machine_type': 'f1-micro',
+              'vm_1_vm_count': 1,
+              'vm_1_zone': 'us-central1-a',
+              'vm_2_cloud': 'GCP',
+              'vm_2_image': 'ubuntu-14-04',
+              'vm_2_machine_type': 'f1-micro',
+              'vm_2_vm_count': 1,
+              'vm_2_zone': 'us-central1-a'},
+ 'metric': 'UDP_RR_Latency_stddev',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '64959ae7-5bbc-4671-b2f6-8263fbaa0e5c',
+ 'sample_uri': '8a83bca9-8843-4b04-9c0f-41d9ca665078',
+ 'test': 'netperf',
+ 'timestamp': 1460400416.82069,
+ 'unit': 'us',
+ 'value': 82.52}
+{'metadata': {'confidence_iter': '1',
+              'confidence_width_percent': '-1.000',
+              'ip_type': 'internal',
+              'max_iter': 1,
+              'netperf_test_length': 60,
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'receiving_machine_type': 'f1-micro',
+              'receiving_zone': 'us-central1-a',
+              'sending_machine_type': 'f1-micro',
+              'sending_zone': 'us-central1-a',
+              'vm_1_cloud': 'GCP',
+              'vm_1_image': 'ubuntu-14-04',
+              'vm_1_machine_type': 'f1-micro',
+              'vm_1_vm_count': 1,
+              'vm_1_zone': 'us-central1-a',
+              'vm_2_cloud': 'GCP',
+              'vm_2_image': 'ubuntu-14-04',
+              'vm_2_machine_type': 'f1-micro',
+              'vm_2_vm_count': 1,
+              'vm_2_zone': 'us-central1-a'},
+ 'metric': 'UDP_RR_Transaction_Rate',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '64959ae7-5bbc-4671-b2f6-8263fbaa0e5c',
+ 'sample_uri': '2b733aa9-2c72-49c6-aa16-c5c7d39ff953',
+ 'test': 'netperf',
+ 'timestamp': 1460400477.763632,
+ 'unit': 'transactions_per_second',
+ 'value': 4702.7}
+{'metadata': {'confidence_iter': '1',
+              'confidence_width_percent': '-1.000',
+              'ip_type': 'internal',
+              'max_iter': 1,
+              'netperf_test_length': 60,
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'receiving_machine_type': 'f1-micro',
+              'receiving_zone': 'us-central1-a',
+              'sending_machine_type': 'f1-micro',
+              'sending_zone': 'us-central1-a',
+              'vm_1_cloud': 'GCP',
+              'vm_1_image': 'ubuntu-14-04',
+              'vm_1_machine_type': 'f1-micro',
+              'vm_1_vm_count': 1,
+              'vm_1_zone': 'us-central1-a',
+              'vm_2_cloud': 'GCP',
+              'vm_2_image': 'ubuntu-14-04',
+              'vm_2_machine_type': 'f1-micro',
+              'vm_2_vm_count': 1,
+              'vm_2_zone': 'us-central1-a'},
+ 'metric': 'UDP_RR_Latency_p50',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '64959ae7-5bbc-4671-b2f6-8263fbaa0e5c',
+ 'sample_uri': 'f83a6a51-bc1b-4181-949c-55e7a683dcf2',
+ 'test': 'netperf',
+ 'timestamp': 1460400477.763669,
+ 'unit': 'us',
+ 'value': 200.0}
+{'metadata': {'confidence_iter': '1',
+              'confidence_width_percent': '-1.000',
+              'ip_type': 'internal',
+              'max_iter': 1,
+              'netperf_test_length': 60,
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'receiving_machine_type': 'f1-micro',
+              'receiving_zone': 'us-central1-a',
+              'sending_machine_type': 'f1-micro',
+              'sending_zone': 'us-central1-a',
+              'vm_1_cloud': 'GCP',
+              'vm_1_image': 'ubuntu-14-04',
+              'vm_1_machine_type': 'f1-micro',
+              'vm_1_vm_count': 1,
+              'vm_1_zone': 'us-central1-a',
+              'vm_2_cloud': 'GCP',
+              'vm_2_image': 'ubuntu-14-04',
+              'vm_2_machine_type': 'f1-micro',
+              'vm_2_vm_count': 1,
+              'vm_2_zone': 'us-central1-a'},
+ 'metric': 'UDP_RR_Latency_p90',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '64959ae7-5bbc-4671-b2f6-8263fbaa0e5c',
+ 'sample_uri': '32bade2d-6021-4075-908d-d56f21cb087e',
+ 'test': 'netperf',
+ 'timestamp': 1460400477.763678,
+ 'unit': 'us',
+ 'value': 259.0}
+{'metadata': {'confidence_iter': '1',
+              'confidence_width_percent': '-1.000',
+              'ip_type': 'internal',
+              'max_iter': 1,
+              'netperf_test_length': 60,
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'receiving_machine_type': 'f1-micro',
+              'receiving_zone': 'us-central1-a',
+              'sending_machine_type': 'f1-micro',
+              'sending_zone': 'us-central1-a',
+              'vm_1_cloud': 'GCP',
+              'vm_1_image': 'ubuntu-14-04',
+              'vm_1_machine_type': 'f1-micro',
+              'vm_1_vm_count': 1,
+              'vm_1_zone': 'us-central1-a',
+              'vm_2_cloud': 'GCP',
+              'vm_2_image': 'ubuntu-14-04',
+              'vm_2_machine_type': 'f1-micro',
+              'vm_2_vm_count': 1,
+              'vm_2_zone': 'us-central1-a'},
+ 'metric': 'UDP_RR_Latency_p99',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '64959ae7-5bbc-4671-b2f6-8263fbaa0e5c',
+ 'sample_uri': '19cb2337-d616-49ab-a4e2-83254896a925',
+ 'test': 'netperf',
+ 'timestamp': 1460400477.763682,
+ 'unit': 'us',
+ 'value': 409.0}
+{'metadata': {'confidence_iter': '1',
+              'confidence_width_percent': '-1.000',
+              'ip_type': 'internal',
+              'max_iter': 1,
+              'netperf_test_length': 60,
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'receiving_machine_type': 'f1-micro',
+              'receiving_zone': 'us-central1-a',
+              'sending_machine_type': 'f1-micro',
+              'sending_zone': 'us-central1-a',
+              'vm_1_cloud': 'GCP',
+              'vm_1_image': 'ubuntu-14-04',
+              'vm_1_machine_type': 'f1-micro',
+              'vm_1_vm_count': 1,
+              'vm_1_zone': 'us-central1-a',
+              'vm_2_cloud': 'GCP',
+              'vm_2_image': 'ubuntu-14-04',
+              'vm_2_machine_type': 'f1-micro',
+              'vm_2_vm_count': 1,
+              'vm_2_zone': 'us-central1-a'},
+ 'metric': 'UDP_RR_Latency_stddev',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '64959ae7-5bbc-4671-b2f6-8263fbaa0e5c',
+ 'sample_uri': '71b9dde4-d24e-48bc-ae54-0c7a97553c58',
+ 'test': 'netperf',
+ 'timestamp': 1460400477.763686,
+ 'unit': 'us',
+ 'value': 77.75}
+{'metadata': {'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'vm_1_cloud': 'GCP',
+              'vm_1_image': 'ubuntu-14-04',
+              'vm_1_machine_type': 'f1-micro',
+              'vm_1_vm_count': 1,
+              'vm_1_zone': 'us-central1-a',
+              'vm_2_cloud': 'GCP',
+              'vm_2_image': 'ubuntu-14-04',
+              'vm_2_machine_type': 'f1-micro',
+              'vm_2_vm_count': 1,
+              'vm_2_zone': 'us-central1-a'},
+ 'metric': 'End to End Runtime',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '64959ae7-5bbc-4671-b2f6-8263fbaa0e5c',
+ 'sample_uri': 'df625287-86ad-44b6-98ca-fd3a655e93f4',
+ 'test': 'netperf',
+ 'timestamp': 1460400700.393339,
+ 'unit': 'seconds',
+ 'value': 1013.7028450965881}
+
+
+-------------------------PerfKitBenchmarker Results Summary-------------------------
+NETPERF:
+  confidence_iter="1" confidence_width_percent="-1.000" max_iter="1" netperf_test_length="60" receiving_machine_type="f1-micro" receiving_zone="us-central1-a" sending_machine_type="f1-micro" sending_zone="us-central1-a"
+  TCP_RR_Transaction_Rate            2082.840000 transactions_per_second        (ip_type="external")
+  TCP_RR_Latency_p50                  464.000000 us                             (ip_type="external")
+  TCP_RR_Latency_p90                  537.000000 us                             (ip_type="external")
+  TCP_RR_Latency_p99                  740.000000 us                             (ip_type="external")
+  TCP_RR_Latency_stddev               157.180000 us                             (ip_type="external")
+  TCP_RR_Transaction_Rate            4394.630000 transactions_per_second        (ip_type="internal")
+  TCP_RR_Latency_p50                  212.000000 us                             (ip_type="internal")
+  TCP_RR_Latency_p90                  280.000000 us                             (ip_type="internal")
+  TCP_RR_Latency_p99                  451.000000 us                             (ip_type="internal")
+  TCP_RR_Latency_stddev               106.810000 us                             (ip_type="internal")
+  TCP_CRR_Transaction_Rate            736.780000 transactions_per_second        (ip_type="external")
+  TCP_CRR_Latency_p50                1310.000000 us                             (ip_type="external")
+  TCP_CRR_Latency_p90                1549.000000 us                             (ip_type="external")
+  TCP_CRR_Latency_p99                2319.000000 us                             (ip_type="external")
+  TCP_CRR_Latency_stddev              323.410000 us                             (ip_type="external")
+  TCP_CRR_Transaction_Rate           2091.800000 transactions_per_second        (ip_type="internal")
+  TCP_CRR_Latency_p50                 449.000000 us                             (ip_type="internal")
+  TCP_CRR_Latency_p90                 590.000000 us                             (ip_type="internal")
+  TCP_CRR_Latency_p99                 931.000000 us                             (ip_type="internal")
+  TCP_CRR_Latency_stddev              177.830000 us                             (ip_type="internal")
+  TCP_STREAM_Throughput               943.870000 Mbits/sec                      (ip_type="external")
+  TCP_STREAM_Throughput               998.970000 Mbits/sec                      (ip_type="internal")
+  UDP_RR_Transaction_Rate            2165.830000 transactions_per_second        (ip_type="external")
+  UDP_RR_Latency_p50                  450.000000 us                             (ip_type="external")
+  UDP_RR_Latency_p90                  516.000000 us                             (ip_type="external")
+  UDP_RR_Latency_p99                  682.000000 us                             (ip_type="external")
+  UDP_RR_Latency_stddev                82.520000 us                             (ip_type="external")
+  UDP_RR_Transaction_Rate            4702.700000 transactions_per_second        (ip_type="internal")
+  UDP_RR_Latency_p50                  200.000000 us                             (ip_type="internal")
+  UDP_RR_Latency_p90                  259.000000 us                             (ip_type="internal")
+  UDP_RR_Latency_p99                  409.000000 us                             (ip_type="internal")
+  UDP_RR_Latency_stddev                77.750000 us                             (ip_type="internal")
+  End to End Runtime                 1013.702845 seconds                       
+
+-------------------------
+For all tests: perfkitbenchmarker_version="unknown" preemptible="False" vm_1_cloud="GCP" vm_1_image="ubuntu-14-04" vm_1_machine_type="f1-micro" vm_1_vm_count="1" vm_1_zone="us-central1-a" vm_2_cloud="GCP" vm_2_image="ubuntu-14-04" vm_2_machine_type="f1-micro" vm_2_vm_count="1" vm_2_zone="us-central1-a"
+2016-04-11 14:51:40,445 02603cc9 MainThread INFO     Publishing 33 samples to /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/perfkitbenchmarker_results.json
+2016-04-11 14:51:40,446 02603cc9 MainThread INFO     Benchmark run statuses:
+----------------------------
+Name     UID       Status   
+----------------------------
+netperf  netperf0  SUCCEEDED
+----------------------------
+Success rate: 100.00% (1/1)
+2016-04-11 14:51:40,446 02603cc9 MainThread INFO     Complete logs can be found at: /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_02603cc9/pkb.log
+LinLindeMacBook-Pro:PerfKitBenchmarker-1.2.0 linlinding$ 

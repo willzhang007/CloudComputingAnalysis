@@ -1,0 +1,784 @@
+Last login: Tue Apr 12 21:49:39 on ttys000
+LinLindeMacBook-Pro:~ linlinding$ cd Documents/670OS/OSproject/installfile/PerfKitBenchmarker-1.2.0
+LinLindeMacBook-Pro:PerfKitBenchmarker-1.2.0 linlinding$ ./pkb.py --project=sage-potential-127001 --benchmarks=scimark2 --machine_type=n1-standard-4
+2016-04-12 22:00:43,736 eb655132 MainThread INFO     Verbose logging to: /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_eb655132/pkb.log
+2016-04-12 22:00:43,737 eb655132 MainThread INFO     PerfKitBenchmarker version: unknown
+2016-04-12 22:00:43,937 eb655132 MainThread INFO     Flag values:
+--machine_type=n1-standard-4
+--project=sage-potential-127001
+--benchmarks=scimark2
+2016-04-12 22:00:43,966 eb655132 MainThread scimark2(1/1) INFO     Provisioning resources for benchmark scimark2
+2016-04-12 22:00:43,968 eb655132 Thread-1 scimark2(1/1) INFO     Running: gcloud compute networks create pkb-network-eb655132 --format json --quiet --project sage-potential-127001 --range 10.0.0.0/16
+2016-04-12 22:01:13,478 eb655132 Thread-1 scimark2(1/1) INFO     Running: gcloud compute networks describe pkb-network-eb655132 --format json --quiet --project sage-potential-127001
+2016-04-12 22:01:14,930 eb655132 Thread-1 scimark2(1/1) INFO     Running: gcloud compute firewall-rules create default-internal-eb655132 --format json --quiet --project sage-potential-127001 --allow tcp:1-65535,udp:1-65535,icmp --network pkb-network-eb655132 --source-ranges 10.0.0.0/16
+2016-04-12 22:01:38,120 eb655132 Thread-1 scimark2(1/1) INFO     Running: gcloud compute firewall-rules describe default-internal-eb655132 --format json --quiet --project sage-potential-127001
+2016-04-12 22:01:39,647 eb655132 Thread-6 scimark2(1/1) INFO     Running: gcloud compute firewall-rules create perfkit-firewall-eb655132-22 --format json --quiet --project sage-potential-127001 --allow tcp:22,udp:22 --network pkb-network-eb655132
+2016-04-12 22:01:57,613 eb655132 Thread-6 scimark2(1/1) INFO     Running: gcloud compute firewall-rules describe perfkit-firewall-eb655132-22 --format json --quiet --project sage-potential-127001
+2016-04-12 22:01:59,115 eb655132 Thread-6 scimark2(1/1) INFO     Running: gcloud compute instances create pkb-eb655132-0 --format json --quiet --project sage-potential-127001 --zone us-central1-a --network pkb-network-eb655132 --image ubuntu-14-04 --boot-disk-auto-delete --boot-disk-size 10 --boot-disk-type pd-standard --machine-type n1-standard-4 --tags perfkitbenchmarker --no-restart-on-failure --metadata-from-file sshKeys=/var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_eb655132/key-metadataL4JHPR --metadata owner=linlinding --maintenance-policy TERMINATE
+2016-04-12 22:02:29,311 eb655132 Thread-6 scimark2(1/1) INFO     Running: gcloud compute instances describe pkb-eb655132-0 --format json --quiet --project sage-potential-127001 --zone us-central1-a
+2016-04-12 22:02:30,728 eb655132 Thread-6 scimark2(1/1) INFO     Running: gcloud compute instances describe pkb-eb655132-0 --format json --quiet --project sage-potential-127001 --zone us-central1-a
+2016-04-12 22:02:32,209 eb655132 Thread-6 scimark2(1/1) INFO     VM: 104.154.121.61
+2016-04-12 22:02:32,210 eb655132 Thread-6 scimark2(1/1) INFO     Waiting for boot completion.
+2016-04-12 22:02:32,210 eb655132 Thread-6 scimark2(1/1) INFO     Running: ssh -A -p 22 perfkit@104.154.121.61 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_eb655132/perfkitbenchmarker_keyfile hostname
+2016-04-12 22:02:38,084 eb655132 Thread-6 scimark2(1/1) INFO     Running: ssh -A -p 22 perfkit@104.154.121.61 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_eb655132/perfkitbenchmarker_keyfile hostname
+2016-04-12 22:02:38,948 eb655132 Thread-6 scimark2(1/1) INFO     Running: ssh -A -p 22 perfkit@104.154.121.61 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_eb655132/perfkitbenchmarker_keyfile hostname
+2016-04-12 22:02:42,544 eb655132 Thread-6 scimark2(1/1) INFO     Running: gcloud compute instances add-metadata pkb-eb655132-0 --format json --quiet --project sage-potential-127001 --zone us-central1-a --metadata benchmark_uid=scimark20,benchmark=scimark2,perfkit_uuid=33301bb4-0d1d-4957-bef8-16fc82352117
+2016-04-12 22:02:51,172 eb655132 Thread-6 scimark2(1/1) INFO     Running: ssh -A -p 22 perfkit@104.154.121.61 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_eb655132/perfkitbenchmarker_keyfile mkdir -p /tmp/pkb
+2016-04-12 22:02:52,094 eb655132 MainThread scimark2(1/1) INFO     ssh to VMs in this benchmark by name with:
+  ssh -F /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_eb655132/ssh_config <vm_name>
+  ssh -F /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_eb655132/ssh_config vm<index>
+  ssh -F /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_eb655132/ssh_config <group_name>-<index>
+2016-04-12 22:02:52,096 eb655132 MainThread scimark2(1/1) INFO     Preparing benchmark scimark2
+2016-04-12 22:02:52,096 eb655132 MainThread scimark2(1/1) INFO     Preparing SciMark2 on 104.154.121.61
+2016-04-12 22:02:52,097 eb655132 MainThread scimark2(1/1) INFO     Running: ssh -A -p 22 perfkit@104.154.121.61 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_eb655132/perfkitbenchmarker_keyfile sudo apt-get update
+2016-04-12 22:02:58,641 eb655132 MainThread scimark2(1/1) INFO     Running: ssh -A -p 22 perfkit@104.154.121.61 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_eb655132/perfkitbenchmarker_keyfile sudo DEBIAN_FRONTEND='noninteractive' /usr/bin/apt-get -y install build-essential git libtool autoconf automake
+2016-04-12 22:03:12,969 eb655132 MainThread scimark2(1/1) INFO     Running: ssh -A -p 22 perfkit@104.154.121.61 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_eb655132/perfkitbenchmarker_keyfile sudo DEBIAN_FRONTEND='noninteractive' /usr/bin/apt-get -y install wget
+2016-04-12 22:03:14,223 eb655132 MainThread scimark2(1/1) INFO     Running: ssh -A -p 22 perfkit@104.154.121.61 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_eb655132/perfkitbenchmarker_keyfile sudo DEBIAN_FRONTEND='noninteractive' /usr/bin/apt-get -y install openjdk-7-jdk
+2016-04-12 22:03:50,136 eb655132 MainThread scimark2(1/1) INFO     Running: ssh -A -p 22 perfkit@104.154.121.61 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_eb655132/perfkitbenchmarker_keyfile sudo DEBIAN_FRONTEND='noninteractive' /usr/bin/apt-get -y install unzip
+2016-04-12 22:03:52,166 eb655132 MainThread scimark2(1/1) INFO     Running: ssh -A -p 22 perfkit@104.154.121.61 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_eb655132/perfkitbenchmarker_keyfile rm -rf /tmp/pkb/scimark2 && mkdir /tmp/pkb/scimark2
+2016-04-12 22:03:53,256 eb655132 MainThread scimark2(1/1) INFO     Ran ssh -A -p 22 perfkit@104.154.121.61 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_eb655132/perfkitbenchmarker_keyfile rm -rf /tmp/pkb/scimark2 && mkdir /tmp/pkb/scimark2. Got return code (0).
+STDOUT: 
+STDERR: Warning: Permanently added '104.154.121.61' (ECDSA) to the list of known hosts.
+
+2016-04-12 22:03:53,257 eb655132 MainThread scimark2(1/1) INFO     Running: ssh -A -p 22 perfkit@104.154.121.61 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_eb655132/perfkitbenchmarker_keyfile wget http://math.nist.gov/scimark2/scimark2lib.jar -O /tmp/pkb/scimark2/scimark2lib.jar
+2016-04-12 22:03:54,464 eb655132 MainThread scimark2(1/1) INFO     Ran ssh -A -p 22 perfkit@104.154.121.61 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_eb655132/perfkitbenchmarker_keyfile wget http://math.nist.gov/scimark2/scimark2lib.jar -O /tmp/pkb/scimark2/scimark2lib.jar. Got return code (0).
+STDOUT: 
+STDERR: Warning: Permanently added '104.154.121.61' (ECDSA) to the list of known hosts.
+--2016-04-13 02:03:54--  http://math.nist.gov/scimark2/scimark2lib.jar
+Resolving math.nist.gov (math.nist.gov)... 129.6.24.27, 2610:20:6005:24::27
+Connecting to math.nist.gov (math.nist.gov)|129.6.24.27|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 34229 (33K) [application/x-java-archive]
+Saving to: /tmp/pkb/scimark2/scimark2lib.jar
+
+     0K .......... .......... .......... ...                  100%  353K=0.09s
+
+2016-04-13 02:03:54 (353 KB/s) - /tmp/pkb/scimark2/scimark2lib.jar saved [34229/34229]
+
+
+2016-04-12 22:03:54,465 eb655132 MainThread scimark2(1/1) INFO     Running: ssh -A -p 22 perfkit@104.154.121.61 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_eb655132/perfkitbenchmarker_keyfile wget http://math.nist.gov/scimark2/scimark2_1c.zip -O /tmp/pkb/scimark2/scimark2_1c.zip
+2016-04-12 22:03:55,693 eb655132 MainThread scimark2(1/1) INFO     Ran ssh -A -p 22 perfkit@104.154.121.61 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_eb655132/perfkitbenchmarker_keyfile wget http://math.nist.gov/scimark2/scimark2_1c.zip -O /tmp/pkb/scimark2/scimark2_1c.zip. Got return code (0).
+STDOUT: 
+STDERR: Warning: Permanently added '104.154.121.61' (ECDSA) to the list of known hosts.
+--2016-04-13 02:03:55--  http://math.nist.gov/scimark2/scimark2_1c.zip
+Resolving math.nist.gov (math.nist.gov)... 129.6.24.27, 2610:20:6005:24::27
+Connecting to math.nist.gov (math.nist.gov)|129.6.24.27|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 13792 (13K) [application/zip]
+Saving to: /tmp/pkb/scimark2/scimark2_1c.zip
+
+     0K .......... ...                                        100%  219K=0.06s
+
+2016-04-13 02:03:56 (219 KB/s) - /tmp/pkb/scimark2/scimark2_1c.zip saved [13792/13792]
+
+
+2016-04-12 22:03:55,694 eb655132 MainThread scimark2(1/1) INFO     Running: ssh -A -p 22 perfkit@104.154.121.61 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_eb655132/perfkitbenchmarker_keyfile (mkdir /tmp/pkb/scimark2/src && cd /tmp/pkb/scimark2/src && unzip /tmp/pkb/scimark2/scimark2_1c.zip)
+2016-04-12 22:03:56,819 eb655132 MainThread scimark2(1/1) INFO     Ran ssh -A -p 22 perfkit@104.154.121.61 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_eb655132/perfkitbenchmarker_keyfile (mkdir /tmp/pkb/scimark2/src && cd /tmp/pkb/scimark2/src && unzip /tmp/pkb/scimark2/scimark2_1c.zip). Got return code (0).
+STDOUT: Archive:  /tmp/pkb/scimark2/scimark2_1c.zip
+  inflating: array.h                 
+  inflating: constants.h             
+  inflating: FFT.h                   
+  inflating: kernel.h                
+  inflating: LU.h                    
+  inflating: MonteCarlo.h            
+  inflating: Random.h                
+  inflating: scimark2.h              
+  inflating: SOR.h                   
+  inflating: SparseCompRow.h         
+  inflating: Stopwatch.h             
+  inflating: array.c                 
+  inflating: FFT.c                   
+  inflating: kernel.c                
+  inflating: LU.c                    
+  inflating: MonteCarlo.c            
+  inflating: Random.c                
+  inflating: scimark2.c              
+  inflating: SOR.c                   
+  inflating: SparseCompRow.c         
+  inflating: Stopwatch.c             
+  inflating: Makefile                
+  inflating: README                  
+
+STDERR: Warning: Permanently added '104.154.121.61' (ECDSA) to the list of known hosts.
+
+2016-04-12 22:03:56,820 eb655132 MainThread scimark2(1/1) INFO     Running: ssh -A -p 22 perfkit@104.154.121.61 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_eb655132/perfkitbenchmarker_keyfile (cd /tmp/pkb/scimark2/src && make CFLAGS="-O3 -march=native")
+2016-04-12 22:03:58,434 eb655132 MainThread scimark2(1/1) INFO     Ran ssh -A -p 22 perfkit@104.154.121.61 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_eb655132/perfkitbenchmarker_keyfile (cd /tmp/pkb/scimark2/src && make CFLAGS="-O3 -march=native"). Got return code (0).
+STDOUT: cc -O3 -march=native -c scimark2.c
+cc -O3 -march=native -c FFT.c
+cc -O3 -march=native -c kernel.c
+cc -O3 -march=native -c Stopwatch.c
+cc -O3 -march=native -c Random.c
+cc -O3 -march=native -c SOR.c
+cc -O3 -march=native -c SparseCompRow.c
+cc -O3 -march=native -c array.c
+cc -O3 -march=native -c MonteCarlo.c
+cc -O3 -march=native -c LU.c
+cc -O3 -march=native -o scimark2 scimark2.o FFT.o kernel.o Stopwatch.o Random.o SOR.o SparseCompRow.o array.o MonteCarlo.o LU.o   -lm
+
+STDERR: Warning: Permanently added '104.154.121.61' (ECDSA) to the list of known hosts.
+
+2016-04-12 22:03:58,435 eb655132 MainThread scimark2(1/1) INFO     Running benchmark scimark2
+2016-04-12 22:03:58,436 eb655132 MainThread scimark2(1/1) INFO     Running SciMark2 on 104.154.121.61
+2016-04-12 22:03:58,436 eb655132 MainThread scimark2(1/1) INFO     Running: ssh -A -p 22 perfkit@104.154.121.61 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_eb655132/perfkitbenchmarker_keyfile (echo ";;; Java small"; cd /tmp/pkb/scimark2 && java -cp scimark2lib.jar jnt.scimark2.commandline)
+2016-04-12 22:04:29,201 eb655132 MainThread scimark2(1/1) INFO     Ran ssh -A -p 22 perfkit@104.154.121.61 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_eb655132/perfkitbenchmarker_keyfile (echo ";;; Java small"; cd /tmp/pkb/scimark2 && java -cp scimark2lib.jar jnt.scimark2.commandline). Got return code (0).
+STDOUT: ;;; Java small
+
+SciMark 2.0a
+
+Composite Score: 1562.2789074675113
+FFT (1024): 931.2550005450735
+SOR (100x100):   1352.2491736703614
+Monte Carlo : 707.1069113630824
+Sparse matmult (N=1000, nz=5000): 1282.5047990203843
+LU (100x100): 3538.278652738655
+
+java.vendor: Oracle Corporation
+java.version: 1.7.0_95
+os.arch: amd64
+os.name: Linux
+os.version: 3.19.0-58-generic
+
+STDERR: Warning: Permanently added '104.154.121.61' (ECDSA) to the list of known hosts.
+
+2016-04-12 22:04:29,204 eb655132 MainThread scimark2(1/1) INFO     Running: ssh -A -p 22 perfkit@104.154.121.61 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_eb655132/perfkitbenchmarker_keyfile (echo ";;; C small"; cd /tmp/pkb/scimark2/src && ./scimark2)
+2016-04-12 22:04:59,563 eb655132 MainThread scimark2(1/1) INFO     Ran ssh -A -p 22 perfkit@104.154.121.61 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_eb655132/perfkitbenchmarker_keyfile (echo ";;; C small"; cd /tmp/pkb/scimark2/src && ./scimark2). Got return code (0).
+STDOUT: ;;; C small
+**                                                              **
+** SciMark2 Numeric Benchmark, see http://math.nist.gov/scimark **
+** for details. (Results can be submitted to pozo@nist.gov)     **
+**                                                              **
+Using       2.00 seconds min time per kenel.
+Composite Score:         1645.71
+FFT             Mflops:  1465.34    (N=1024)
+SOR             Mflops:  1064.36    (100 x 100)
+MonteCarlo:     Mflops:   449.12
+Sparse matmult  Mflops:  1651.92    (N=1000, nz=5000)
+LU              Mflops:  3597.79    (M=100, N=100)
+
+STDERR: Warning: Permanently added '104.154.121.61' (ECDSA) to the list of known hosts.
+
+2016-04-12 22:04:59,564 eb655132 MainThread scimark2(1/1) INFO     Running: ssh -A -p 22 perfkit@104.154.121.61 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_eb655132/perfkitbenchmarker_keyfile (echo ";;; Java large"; cd /tmp/pkb/scimark2 && java -cp scimark2lib.jar jnt.scimark2.commandline -large)
+2016-04-12 22:05:30,405 eb655132 MainThread scimark2(1/1) INFO     Ran ssh -A -p 22 perfkit@104.154.121.61 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_eb655132/perfkitbenchmarker_keyfile (echo ";;; Java large"; cd /tmp/pkb/scimark2 && java -cp scimark2lib.jar jnt.scimark2.commandline -large). Got return code (0).
+STDOUT: ;;; Java large
+
+SciMark 2.0a
+
+Composite Score: 1473.9631611494826
+FFT (1048576): 247.93906640040018
+SOR (1000x1000):   1234.7399584890356
+Monte Carlo : 687.6348742447686
+Sparse matmult (N=100000, nz=1000000): 1435.681775953551
+LU (1000x1000): 3763.8201306596575
+
+java.vendor: Oracle Corporation
+java.version: 1.7.0_95
+os.arch: amd64
+os.name: Linux
+os.version: 3.19.0-58-generic
+
+STDERR: Warning: Permanently added '104.154.121.61' (ECDSA) to the list of known hosts.
+
+2016-04-12 22:05:30,406 eb655132 MainThread scimark2(1/1) INFO     Running: ssh -A -p 22 perfkit@104.154.121.61 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_eb655132/perfkitbenchmarker_keyfile (echo ";;; C large"; cd /tmp/pkb/scimark2/src && ./scimark2 -large)
+2016-04-12 22:06:01,844 eb655132 MainThread scimark2(1/1) INFO     Ran ssh -A -p 22 perfkit@104.154.121.61 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_eb655132/perfkitbenchmarker_keyfile (echo ";;; C large"; cd /tmp/pkb/scimark2/src && ./scimark2 -large). Got return code (0).
+STDOUT: ;;; C large
+**                                                              **
+** SciMark2 Numeric Benchmark, see http://math.nist.gov/scimark **
+** for details. (Results can be submitted to pozo@nist.gov)     **
+**                                                              **
+Using       2.00 seconds min time per kenel.
+Composite Score:         1301.85
+FFT             Mflops:   233.40    (N=1048576)
+SOR             Mflops:   912.97    (1000 x 1000)
+MonteCarlo:     Mflops:   407.33
+Sparse matmult  Mflops:  1627.32    (N=100000, nz=1000000)
+LU              Mflops:  3328.25    (M=1000, N=1000)
+
+STDERR: Warning: Permanently added '104.154.121.61' (ECDSA) to the list of known hosts.
+
+2016-04-12 22:06:01,847 eb655132 MainThread scimark2(1/1) INFO     Cleaning up benchmark scimark2
+2016-04-12 22:06:01,847 eb655132 MainThread scimark2(1/1) INFO     Tearing down resources for benchmark scimark2
+2016-04-12 22:06:01,848 eb655132 Thread-34 scimark2(1/1) INFO     Running: gcloud compute instances delete pkb-eb655132-0 --format json --quiet --project sage-potential-127001 --zone us-central1-a
+2016-04-12 22:06:41,449 eb655132 Thread-34 scimark2(1/1) INFO     Running: gcloud compute instances describe pkb-eb655132-0 --format json --quiet --project sage-potential-127001 --zone us-central1-a
+2016-04-12 22:06:44,338 eb655132 MainThread scimark2(1/1) INFO     Running: gcloud compute firewall-rules delete perfkit-firewall-eb655132-22 --format json --quiet --project sage-potential-127001
+2016-04-12 22:07:02,778 eb655132 MainThread scimark2(1/1) INFO     Running: gcloud compute firewall-rules describe perfkit-firewall-eb655132-22 --format json --quiet --project sage-potential-127001
+2016-04-12 22:07:04,849 eb655132 MainThread scimark2(1/1) INFO     Running: gcloud compute firewall-rules delete default-internal-eb655132 --format json --quiet --project sage-potential-127001
+2016-04-12 22:07:23,025 eb655132 MainThread scimark2(1/1) INFO     Running: gcloud compute firewall-rules describe default-internal-eb655132 --format json --quiet --project sage-potential-127001
+2016-04-12 22:07:25,071 eb655132 MainThread scimark2(1/1) INFO     Running: gcloud compute networks delete pkb-network-eb655132 --format json --quiet --project sage-potential-127001
+2016-04-12 22:07:59,115 eb655132 MainThread scimark2(1/1) INFO     Running: gcloud compute networks describe pkb-network-eb655132 --format json --quiet --project sage-potential-127001
+2016-04-12 22:08:01,144 eb655132 MainThread INFO     
+-------------------------PerfKitBenchmarker Complete Results-------------------------
+{'metadata': {'benchmark_language': u'Java',
+              'benchmark_size': u'small',
+              'cloud': 'GCP',
+              'image': 'ubuntu-14-04',
+              u'java.vendor': u'Oracle Corporation',
+              u'java.version': u'1.7.0_95',
+              'machine_type': 'n1-standard-4',
+              u'os.arch': u'amd64',
+              u'os.name': u'Linux',
+              u'os.version': u'3.19.0-58-generic',
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'vm_count': 1,
+              'zone': 'us-central1-a'},
+ 'metric': u'Composite Score',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '33301bb4-0d1d-4957-bef8-16fc82352117',
+ 'sample_uri': '81ef26b3-584b-4b27-9d9c-67a7530591d4',
+ 'test': 'scimark2',
+ 'timestamp': 1460513069.203852,
+ 'unit': 'Mflops',
+ 'value': 1562.2789074675113}
+{'metadata': {'benchmark_language': u'Java',
+              'benchmark_size': u'small',
+              'cloud': 'GCP',
+              'image': 'ubuntu-14-04',
+              u'java.vendor': u'Oracle Corporation',
+              u'java.version': u'1.7.0_95',
+              'machine_type': 'n1-standard-4',
+              u'os.arch': u'amd64',
+              u'os.name': u'Linux',
+              u'os.version': u'3.19.0-58-generic',
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'vm_count': 1,
+              'zone': 'us-central1-a'},
+ 'metric': u'FFT (1024)',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '33301bb4-0d1d-4957-bef8-16fc82352117',
+ 'sample_uri': 'f8919ce4-db3d-4ace-a4c1-e497c52eef25',
+ 'test': 'scimark2',
+ 'timestamp': 1460513069.203903,
+ 'unit': 'Mflops',
+ 'value': 931.2550005450735}
+{'metadata': {'benchmark_language': u'Java',
+              'benchmark_size': u'small',
+              'cloud': 'GCP',
+              'image': 'ubuntu-14-04',
+              u'java.vendor': u'Oracle Corporation',
+              u'java.version': u'1.7.0_95',
+              'machine_type': 'n1-standard-4',
+              u'os.arch': u'amd64',
+              u'os.name': u'Linux',
+              u'os.version': u'3.19.0-58-generic',
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'vm_count': 1,
+              'zone': 'us-central1-a'},
+ 'metric': u'SOR (100x100)',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '33301bb4-0d1d-4957-bef8-16fc82352117',
+ 'sample_uri': 'adf4fc7c-f9d0-45b1-9a2a-9f226a30f06b',
+ 'test': 'scimark2',
+ 'timestamp': 1460513069.203906,
+ 'unit': 'Mflops',
+ 'value': 1352.2491736703614}
+{'metadata': {'benchmark_language': u'Java',
+              'benchmark_size': u'small',
+              'cloud': 'GCP',
+              'image': 'ubuntu-14-04',
+              u'java.vendor': u'Oracle Corporation',
+              u'java.version': u'1.7.0_95',
+              'machine_type': 'n1-standard-4',
+              u'os.arch': u'amd64',
+              u'os.name': u'Linux',
+              u'os.version': u'3.19.0-58-generic',
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'vm_count': 1,
+              'zone': 'us-central1-a'},
+ 'metric': u'Monte Carlo',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '33301bb4-0d1d-4957-bef8-16fc82352117',
+ 'sample_uri': 'cee7c2f5-8463-41d4-ac49-7a3964be0a5f',
+ 'test': 'scimark2',
+ 'timestamp': 1460513069.203908,
+ 'unit': 'Mflops',
+ 'value': 707.1069113630824}
+{'metadata': {'benchmark_language': u'Java',
+              'benchmark_size': u'small',
+              'cloud': 'GCP',
+              'image': 'ubuntu-14-04',
+              u'java.vendor': u'Oracle Corporation',
+              u'java.version': u'1.7.0_95',
+              'machine_type': 'n1-standard-4',
+              u'os.arch': u'amd64',
+              u'os.name': u'Linux',
+              u'os.version': u'3.19.0-58-generic',
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'vm_count': 1,
+              'zone': 'us-central1-a'},
+ 'metric': u'Sparse matmult (N=1000, nz=5000)',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '33301bb4-0d1d-4957-bef8-16fc82352117',
+ 'sample_uri': 'd927c27e-01a6-428c-9ab3-51f72e821965',
+ 'test': 'scimark2',
+ 'timestamp': 1460513069.20391,
+ 'unit': 'Mflops',
+ 'value': 1282.5047990203843}
+{'metadata': {'benchmark_language': u'Java',
+              'benchmark_size': u'small',
+              'cloud': 'GCP',
+              'image': 'ubuntu-14-04',
+              u'java.vendor': u'Oracle Corporation',
+              u'java.version': u'1.7.0_95',
+              'machine_type': 'n1-standard-4',
+              u'os.arch': u'amd64',
+              u'os.name': u'Linux',
+              u'os.version': u'3.19.0-58-generic',
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'vm_count': 1,
+              'zone': 'us-central1-a'},
+ 'metric': u'LU (100x100)',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '33301bb4-0d1d-4957-bef8-16fc82352117',
+ 'sample_uri': '58c2ae05-0ced-49c5-904d-62614c3b5ee7',
+ 'test': 'scimark2',
+ 'timestamp': 1460513069.203912,
+ 'unit': 'Mflops',
+ 'value': 3538.278652738655}
+{'metadata': {'benchmark_language': u'C',
+              'benchmark_size': u'small',
+              'cloud': 'GCP',
+              'image': 'ubuntu-14-04',
+              'machine_type': 'n1-standard-4',
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'vm_count': 1,
+              'zone': 'us-central1-a'},
+ 'metric': u'Composite Score',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '33301bb4-0d1d-4957-bef8-16fc82352117',
+ 'sample_uri': '807aaf5e-075a-4e68-8791-740df87e7634',
+ 'test': 'scimark2',
+ 'timestamp': 1460513099.564344,
+ 'unit': 'Mflops',
+ 'value': 1645.71}
+{'metadata': {'benchmark_language': u'C',
+              'benchmark_size': u'small',
+              'cloud': 'GCP',
+              'image': 'ubuntu-14-04',
+              'machine_type': 'n1-standard-4',
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'vm_count': 1,
+              'zone': 'us-central1-a'},
+ 'metric': 'FFT (N=1024)',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '33301bb4-0d1d-4957-bef8-16fc82352117',
+ 'sample_uri': 'd5ffa7cd-b682-4ed6-b9dc-675f4ff2b54e',
+ 'test': 'scimark2',
+ 'timestamp': 1460513099.564463,
+ 'unit': 'Mflops',
+ 'value': 1465.34}
+{'metadata': {'benchmark_language': u'C',
+              'benchmark_size': u'small',
+              'cloud': 'GCP',
+              'image': 'ubuntu-14-04',
+              'machine_type': 'n1-standard-4',
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'vm_count': 1,
+              'zone': 'us-central1-a'},
+ 'metric': 'SOR (100 x 100)',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '33301bb4-0d1d-4957-bef8-16fc82352117',
+ 'sample_uri': '35459af2-ffa3-4718-874f-e13e2c53bee2',
+ 'test': 'scimark2',
+ 'timestamp': 1460513099.564468,
+ 'unit': 'Mflops',
+ 'value': 1064.36}
+{'metadata': {'benchmark_language': u'C',
+              'benchmark_size': u'small',
+              'cloud': 'GCP',
+              'image': 'ubuntu-14-04',
+              'machine_type': 'n1-standard-4',
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'vm_count': 1,
+              'zone': 'us-central1-a'},
+ 'metric': 'MonteCarlo',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '33301bb4-0d1d-4957-bef8-16fc82352117',
+ 'sample_uri': 'af414dc4-c130-4606-b1b8-55423cd92e9f',
+ 'test': 'scimark2',
+ 'timestamp': 1460513099.56447,
+ 'unit': 'Mflops',
+ 'value': 449.12}
+{'metadata': {'benchmark_language': u'C',
+              'benchmark_size': u'small',
+              'cloud': 'GCP',
+              'image': 'ubuntu-14-04',
+              'machine_type': 'n1-standard-4',
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'vm_count': 1,
+              'zone': 'us-central1-a'},
+ 'metric': 'Sparse matmult (N=1000, nz=5000)',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '33301bb4-0d1d-4957-bef8-16fc82352117',
+ 'sample_uri': 'cadeca81-e53f-4d30-ba88-5c3d76aff2c0',
+ 'test': 'scimark2',
+ 'timestamp': 1460513099.564472,
+ 'unit': 'Mflops',
+ 'value': 1651.92}
+{'metadata': {'benchmark_language': u'C',
+              'benchmark_size': u'small',
+              'cloud': 'GCP',
+              'image': 'ubuntu-14-04',
+              'machine_type': 'n1-standard-4',
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'vm_count': 1,
+              'zone': 'us-central1-a'},
+ 'metric': 'LU (M=100, N=100)',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '33301bb4-0d1d-4957-bef8-16fc82352117',
+ 'sample_uri': '05fec4d1-97e1-40a4-bb64-69a9b48c9459',
+ 'test': 'scimark2',
+ 'timestamp': 1460513099.564474,
+ 'unit': 'Mflops',
+ 'value': 3597.79}
+{'metadata': {'benchmark_language': u'Java',
+              'benchmark_size': u'large',
+              'cloud': 'GCP',
+              'image': 'ubuntu-14-04',
+              u'java.vendor': u'Oracle Corporation',
+              u'java.version': u'1.7.0_95',
+              'machine_type': 'n1-standard-4',
+              u'os.arch': u'amd64',
+              u'os.name': u'Linux',
+              u'os.version': u'3.19.0-58-generic',
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'vm_count': 1,
+              'zone': 'us-central1-a'},
+ 'metric': u'Composite Score',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '33301bb4-0d1d-4957-bef8-16fc82352117',
+ 'sample_uri': '9beec687-f4c1-45ad-9d8e-601adf04be30',
+ 'test': 'scimark2',
+ 'timestamp': 1460513130.406596,
+ 'unit': 'Mflops',
+ 'value': 1473.9631611494826}
+{'metadata': {'benchmark_language': u'Java',
+              'benchmark_size': u'large',
+              'cloud': 'GCP',
+              'image': 'ubuntu-14-04',
+              u'java.vendor': u'Oracle Corporation',
+              u'java.version': u'1.7.0_95',
+              'machine_type': 'n1-standard-4',
+              u'os.arch': u'amd64',
+              u'os.name': u'Linux',
+              u'os.version': u'3.19.0-58-generic',
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'vm_count': 1,
+              'zone': 'us-central1-a'},
+ 'metric': u'FFT (1048576)',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '33301bb4-0d1d-4957-bef8-16fc82352117',
+ 'sample_uri': 'bda55c90-9171-4c26-832b-2db7a39045ec',
+ 'test': 'scimark2',
+ 'timestamp': 1460513130.406645,
+ 'unit': 'Mflops',
+ 'value': 247.93906640040018}
+{'metadata': {'benchmark_language': u'Java',
+              'benchmark_size': u'large',
+              'cloud': 'GCP',
+              'image': 'ubuntu-14-04',
+              u'java.vendor': u'Oracle Corporation',
+              u'java.version': u'1.7.0_95',
+              'machine_type': 'n1-standard-4',
+              u'os.arch': u'amd64',
+              u'os.name': u'Linux',
+              u'os.version': u'3.19.0-58-generic',
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'vm_count': 1,
+              'zone': 'us-central1-a'},
+ 'metric': u'SOR (1000x1000)',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '33301bb4-0d1d-4957-bef8-16fc82352117',
+ 'sample_uri': 'ae437a5c-b4bc-4e48-a4f3-75297f43d2f2',
+ 'test': 'scimark2',
+ 'timestamp': 1460513130.406648,
+ 'unit': 'Mflops',
+ 'value': 1234.7399584890356}
+{'metadata': {'benchmark_language': u'Java',
+              'benchmark_size': u'large',
+              'cloud': 'GCP',
+              'image': 'ubuntu-14-04',
+              u'java.vendor': u'Oracle Corporation',
+              u'java.version': u'1.7.0_95',
+              'machine_type': 'n1-standard-4',
+              u'os.arch': u'amd64',
+              u'os.name': u'Linux',
+              u'os.version': u'3.19.0-58-generic',
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'vm_count': 1,
+              'zone': 'us-central1-a'},
+ 'metric': u'Monte Carlo',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '33301bb4-0d1d-4957-bef8-16fc82352117',
+ 'sample_uri': '6bea20c7-5cee-4bce-bd06-b8111007f341',
+ 'test': 'scimark2',
+ 'timestamp': 1460513130.40665,
+ 'unit': 'Mflops',
+ 'value': 687.6348742447686}
+{'metadata': {'benchmark_language': u'Java',
+              'benchmark_size': u'large',
+              'cloud': 'GCP',
+              'image': 'ubuntu-14-04',
+              u'java.vendor': u'Oracle Corporation',
+              u'java.version': u'1.7.0_95',
+              'machine_type': 'n1-standard-4',
+              u'os.arch': u'amd64',
+              u'os.name': u'Linux',
+              u'os.version': u'3.19.0-58-generic',
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'vm_count': 1,
+              'zone': 'us-central1-a'},
+ 'metric': u'Sparse matmult (N=100000, nz=1000000)',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '33301bb4-0d1d-4957-bef8-16fc82352117',
+ 'sample_uri': '725a48f2-0b84-41bd-9fba-905d9de18098',
+ 'test': 'scimark2',
+ 'timestamp': 1460513130.406652,
+ 'unit': 'Mflops',
+ 'value': 1435.681775953551}
+{'metadata': {'benchmark_language': u'Java',
+              'benchmark_size': u'large',
+              'cloud': 'GCP',
+              'image': 'ubuntu-14-04',
+              u'java.vendor': u'Oracle Corporation',
+              u'java.version': u'1.7.0_95',
+              'machine_type': 'n1-standard-4',
+              u'os.arch': u'amd64',
+              u'os.name': u'Linux',
+              u'os.version': u'3.19.0-58-generic',
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'vm_count': 1,
+              'zone': 'us-central1-a'},
+ 'metric': u'LU (1000x1000)',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '33301bb4-0d1d-4957-bef8-16fc82352117',
+ 'sample_uri': 'ab22c4a8-8307-4e68-9635-3e01adf61155',
+ 'test': 'scimark2',
+ 'timestamp': 1460513130.406654,
+ 'unit': 'Mflops',
+ 'value': 3763.8201306596575}
+{'metadata': {'benchmark_language': u'C',
+              'benchmark_size': u'large',
+              'cloud': 'GCP',
+              'image': 'ubuntu-14-04',
+              'machine_type': 'n1-standard-4',
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'vm_count': 1,
+              'zone': 'us-central1-a'},
+ 'metric': u'Composite Score',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '33301bb4-0d1d-4957-bef8-16fc82352117',
+ 'sample_uri': 'e8449799-6438-4469-bc4a-3afc5520caa1',
+ 'test': 'scimark2',
+ 'timestamp': 1460513161.845065,
+ 'unit': 'Mflops',
+ 'value': 1301.85}
+{'metadata': {'benchmark_language': u'C',
+              'benchmark_size': u'large',
+              'cloud': 'GCP',
+              'image': 'ubuntu-14-04',
+              'machine_type': 'n1-standard-4',
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'vm_count': 1,
+              'zone': 'us-central1-a'},
+ 'metric': 'FFT (N=1048576)',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '33301bb4-0d1d-4957-bef8-16fc82352117',
+ 'sample_uri': '64462854-1495-480f-90fb-65b71fada947',
+ 'test': 'scimark2',
+ 'timestamp': 1460513161.845164,
+ 'unit': 'Mflops',
+ 'value': 233.4}
+{'metadata': {'benchmark_language': u'C',
+              'benchmark_size': u'large',
+              'cloud': 'GCP',
+              'image': 'ubuntu-14-04',
+              'machine_type': 'n1-standard-4',
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'vm_count': 1,
+              'zone': 'us-central1-a'},
+ 'metric': 'SOR (1000 x 1000)',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '33301bb4-0d1d-4957-bef8-16fc82352117',
+ 'sample_uri': 'ac68285a-471d-4a7b-8d10-051b52141d7b',
+ 'test': 'scimark2',
+ 'timestamp': 1460513161.845171,
+ 'unit': 'Mflops',
+ 'value': 912.97}
+{'metadata': {'benchmark_language': u'C',
+              'benchmark_size': u'large',
+              'cloud': 'GCP',
+              'image': 'ubuntu-14-04',
+              'machine_type': 'n1-standard-4',
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'vm_count': 1,
+              'zone': 'us-central1-a'},
+ 'metric': 'MonteCarlo',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '33301bb4-0d1d-4957-bef8-16fc82352117',
+ 'sample_uri': '0aee48f6-ee72-4bb5-8f46-be21926b4f5c',
+ 'test': 'scimark2',
+ 'timestamp': 1460513161.845173,
+ 'unit': 'Mflops',
+ 'value': 407.33}
+{'metadata': {'benchmark_language': u'C',
+              'benchmark_size': u'large',
+              'cloud': 'GCP',
+              'image': 'ubuntu-14-04',
+              'machine_type': 'n1-standard-4',
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'vm_count': 1,
+              'zone': 'us-central1-a'},
+ 'metric': 'Sparse matmult (N=100000, nz=1000000)',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '33301bb4-0d1d-4957-bef8-16fc82352117',
+ 'sample_uri': '2fe773ff-794e-4445-b315-95ace067acf9',
+ 'test': 'scimark2',
+ 'timestamp': 1460513161.845176,
+ 'unit': 'Mflops',
+ 'value': 1627.32}
+{'metadata': {'benchmark_language': u'C',
+              'benchmark_size': u'large',
+              'cloud': 'GCP',
+              'image': 'ubuntu-14-04',
+              'machine_type': 'n1-standard-4',
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'vm_count': 1,
+              'zone': 'us-central1-a'},
+ 'metric': 'LU (M=1000, N=1000)',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '33301bb4-0d1d-4957-bef8-16fc82352117',
+ 'sample_uri': 'fbcd7d9c-518e-4cf4-b753-bc8a6ea35614',
+ 'test': 'scimark2',
+ 'timestamp': 1460513161.845179,
+ 'unit': 'Mflops',
+ 'value': 3328.25}
+{'metadata': {'cloud': 'GCP',
+              'image': 'ubuntu-14-04',
+              'machine_type': 'n1-standard-4',
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'vm_count': 1,
+              'zone': 'us-central1-a'},
+ 'metric': 'End to End Runtime',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '33301bb4-0d1d-4957-bef8-16fc82352117',
+ 'sample_uri': '2f672ab5-ae23-48b0-ac55-901323405163',
+ 'test': 'scimark2',
+ 'timestamp': 1460513281.125533,
+ 'unit': 'seconds',
+ 'value': 437.1593391895294}
+
+
+-------------------------PerfKitBenchmarker Results Summary-------------------------
+SCIMARK2:
+  Composite Score                    1562.278907 Mflops                         (benchmark_language="Java" benchmark_size="small" java.vendor="Oracle Corporation" java.version="1.7.0_95" os.arch="amd64" os.name="Linux" os.version="3.19.0-58-generic")
+  FFT (1024)                          931.255001 Mflops                         (benchmark_language="Java" benchmark_size="small" java.vendor="Oracle Corporation" java.version="1.7.0_95" os.arch="amd64" os.name="Linux" os.version="3.19.0-58-generic")
+  SOR (100x100)                      1352.249174 Mflops                         (benchmark_language="Java" benchmark_size="small" java.vendor="Oracle Corporation" java.version="1.7.0_95" os.arch="amd64" os.name="Linux" os.version="3.19.0-58-generic")
+  Monte Carlo                         707.106911 Mflops                         (benchmark_language="Java" benchmark_size="small" java.vendor="Oracle Corporation" java.version="1.7.0_95" os.arch="amd64" os.name="Linux" os.version="3.19.0-58-generic")
+  Sparse matmult (N=1000, nz=5000)     1282.504799 Mflops                         (benchmark_language="Java" benchmark_size="small" java.vendor="Oracle Corporation" java.version="1.7.0_95" os.arch="amd64" os.name="Linux" os.version="3.19.0-58-generic")
+  LU (100x100)                       3538.278653 Mflops                         (benchmark_language="Java" benchmark_size="small" java.vendor="Oracle Corporation" java.version="1.7.0_95" os.arch="amd64" os.name="Linux" os.version="3.19.0-58-generic")
+  Composite Score                    1645.710000 Mflops                         (benchmark_language="C" benchmark_size="small")
+  FFT (N=1024)                       1465.340000 Mflops                         (benchmark_language="C" benchmark_size="small")
+  SOR (100 x 100)                    1064.360000 Mflops                         (benchmark_language="C" benchmark_size="small")
+  MonteCarlo                          449.120000 Mflops                         (benchmark_language="C" benchmark_size="small")
+  Sparse matmult (N=1000, nz=5000)     1651.920000 Mflops                         (benchmark_language="C" benchmark_size="small")
+  LU (M=100, N=100)                  3597.790000 Mflops                         (benchmark_language="C" benchmark_size="small")
+  Composite Score                    1473.963161 Mflops                         (benchmark_language="Java" benchmark_size="large" java.vendor="Oracle Corporation" java.version="1.7.0_95" os.arch="amd64" os.name="Linux" os.version="3.19.0-58-generic")
+  FFT (1048576)                       247.939066 Mflops                         (benchmark_language="Java" benchmark_size="large" java.vendor="Oracle Corporation" java.version="1.7.0_95" os.arch="amd64" os.name="Linux" os.version="3.19.0-58-generic")
+  SOR (1000x1000)                    1234.739958 Mflops                         (benchmark_language="Java" benchmark_size="large" java.vendor="Oracle Corporation" java.version="1.7.0_95" os.arch="amd64" os.name="Linux" os.version="3.19.0-58-generic")
+  Monte Carlo                         687.634874 Mflops                         (benchmark_language="Java" benchmark_size="large" java.vendor="Oracle Corporation" java.version="1.7.0_95" os.arch="amd64" os.name="Linux" os.version="3.19.0-58-generic")
+  Sparse matmult (N=100000, nz=1000000)     1435.681776 Mflops                         (benchmark_language="Java" benchmark_size="large" java.vendor="Oracle Corporation" java.version="1.7.0_95" os.arch="amd64" os.name="Linux" os.version="3.19.0-58-generic")
+  LU (1000x1000)                     3763.820131 Mflops                         (benchmark_language="Java" benchmark_size="large" java.vendor="Oracle Corporation" java.version="1.7.0_95" os.arch="amd64" os.name="Linux" os.version="3.19.0-58-generic")
+  Composite Score                    1301.850000 Mflops                         (benchmark_language="C" benchmark_size="large")
+  FFT (N=1048576)                     233.400000 Mflops                         (benchmark_language="C" benchmark_size="large")
+  SOR (1000 x 1000)                   912.970000 Mflops                         (benchmark_language="C" benchmark_size="large")
+  MonteCarlo                          407.330000 Mflops                         (benchmark_language="C" benchmark_size="large")
+  Sparse matmult (N=100000, nz=1000000)     1627.320000 Mflops                         (benchmark_language="C" benchmark_size="large")
+  LU (M=1000, N=1000)                3328.250000 Mflops                         (benchmark_language="C" benchmark_size="large")
+  End to End Runtime                  437.159339 seconds                       
+
+-------------------------
+For all tests: cloud="GCP" image="ubuntu-14-04" machine_type="n1-standard-4" perfkitbenchmarker_version="unknown" preemptible="False" vm_count="1" zone="us-central1-a"
+2016-04-12 22:08:01,146 eb655132 MainThread INFO     Publishing 25 samples to /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_eb655132/perfkitbenchmarker_results.json
+2016-04-12 22:08:01,147 eb655132 MainThread INFO     Benchmark run statuses:
+------------------------------
+Name      UID        Status   
+------------------------------
+scimark2  scimark20  SUCCEEDED
+------------------------------
+Success rate: 100.00% (1/1)
+2016-04-12 22:08:01,147 eb655132 MainThread INFO     Complete logs can be found at: /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_eb655132/pkb.log
+LinLindeMacBook-Pro:PerfKitBenchmarker-1.2.0 linlinding$ 

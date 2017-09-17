@@ -1,0 +1,297 @@
+Last login: Mon Apr 11 12:36:52 on ttys000
+LinLindeMacBook-Pro:~ linlinding$ cd Documents/670OS/OSproject/installfile/PerfKitBenchmarker-1.2.0
+LinLindeMacBook-Pro:PerfKitBenchmarker-1.2.0 linlinding$ ./pkb.py --project=sage-potential-127001 --benchmarks=iperf --machine_type=n1-highcpu-2
+2016-04-11 12:44:57,906 55656c30 MainThread INFO     Verbose logging to: /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/pkb.log
+2016-04-11 12:44:57,907 55656c30 MainThread INFO     PerfKitBenchmarker version: unknown
+2016-04-11 12:44:58,340 55656c30 MainThread INFO     Flag values:
+--machine_type=n1-highcpu-2
+--project=sage-potential-127001
+--benchmarks=iperf
+2016-04-11 12:44:58,371 55656c30 MainThread iperf(1/1) INFO     Provisioning resources for benchmark iperf
+2016-04-11 12:44:58,373 55656c30 Thread-1 iperf(1/1) INFO     Running: gcloud compute networks create pkb-network-55656c30 --format json --quiet --project sage-potential-127001 --range 10.0.0.0/16
+2016-04-11 12:45:27,604 55656c30 Thread-1 iperf(1/1) INFO     Running: gcloud compute networks describe pkb-network-55656c30 --format json --quiet --project sage-potential-127001
+2016-04-11 12:45:29,216 55656c30 Thread-1 iperf(1/1) INFO     Running: gcloud compute firewall-rules create default-internal-55656c30 --format json --quiet --project sage-potential-127001 --allow tcp:1-65535,udp:1-65535,icmp --network pkb-network-55656c30 --source-ranges 10.0.0.0/16
+2016-04-11 12:45:47,231 55656c30 Thread-1 iperf(1/1) INFO     Running: gcloud compute firewall-rules describe default-internal-55656c30 --format json --quiet --project sage-potential-127001
+2016-04-11 12:45:49,107 55656c30 Thread-6 iperf(1/1) INFO     Running: gcloud compute firewall-rules create perfkit-firewall-55656c30-22 --format json --quiet --project sage-potential-127001 --allow tcp:22,udp:22 --network pkb-network-55656c30
+2016-04-11 12:46:07,309 55656c30 Thread-6 iperf(1/1) INFO     Running: gcloud compute firewall-rules describe perfkit-firewall-55656c30-22 --format json --quiet --project sage-potential-127001
+2016-04-11 12:46:08,834 55656c30 Thread-7 iperf(1/1) INFO     Running: gcloud compute instances create pkb-55656c30-1 --format json --quiet --project sage-potential-127001 --zone us-central1-a --network pkb-network-55656c30 --image ubuntu-14-04 --boot-disk-auto-delete --boot-disk-size 10 --boot-disk-type pd-standard --machine-type n1-highcpu-2 --tags perfkitbenchmarker --no-restart-on-failure --metadata-from-file sshKeys=/var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/key-metadataHp1adc --metadata owner=linlinding --maintenance-policy TERMINATE
+2016-04-11 12:46:08,834 55656c30 Thread-6 iperf(1/1) INFO     Running: gcloud compute instances create pkb-55656c30-0 --format json --quiet --project sage-potential-127001 --zone us-central1-a --network pkb-network-55656c30 --image ubuntu-14-04 --boot-disk-auto-delete --boot-disk-size 10 --boot-disk-type pd-standard --machine-type n1-highcpu-2 --tags perfkitbenchmarker --no-restart-on-failure --metadata-from-file sshKeys=/var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/key-metadata5PWngP --metadata owner=linlinding --maintenance-policy TERMINATE
+2016-04-11 12:46:37,824 55656c30 Thread-6 iperf(1/1) INFO     Running: gcloud compute instances describe pkb-55656c30-0 --format json --quiet --project sage-potential-127001 --zone us-central1-a
+2016-04-11 12:46:37,832 55656c30 Thread-7 iperf(1/1) INFO     Running: gcloud compute instances describe pkb-55656c30-1 --format json --quiet --project sage-potential-127001 --zone us-central1-a
+2016-04-11 12:46:39,335 55656c30 Thread-7 iperf(1/1) INFO     Running: gcloud compute instances describe pkb-55656c30-1 --format json --quiet --project sage-potential-127001 --zone us-central1-a
+2016-04-11 12:46:39,335 55656c30 Thread-6 iperf(1/1) INFO     Running: gcloud compute instances describe pkb-55656c30-0 --format json --quiet --project sage-potential-127001 --zone us-central1-a
+2016-04-11 12:46:40,615 55656c30 Thread-7 iperf(1/1) INFO     VM: 8.35.192.26
+2016-04-11 12:46:40,616 55656c30 Thread-6 iperf(1/1) INFO     VM: 104.197.249.254
+2016-04-11 12:46:40,616 55656c30 Thread-7 iperf(1/1) INFO     Waiting for boot completion.
+2016-04-11 12:46:40,616 55656c30 Thread-6 iperf(1/1) INFO     Waiting for boot completion.
+2016-04-11 12:46:40,617 55656c30 Thread-7 iperf(1/1) INFO     Running: ssh -A -p 22 perfkit@8.35.192.26 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/perfkitbenchmarker_keyfile hostname
+2016-04-11 12:46:40,617 55656c30 Thread-6 iperf(1/1) INFO     Running: ssh -A -p 22 perfkit@104.197.249.254 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/perfkitbenchmarker_keyfile hostname
+2016-04-11 12:46:41,296 55656c30 Thread-6 iperf(1/1) INFO     Running: ssh -A -p 22 perfkit@104.197.249.254 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/perfkitbenchmarker_keyfile hostname
+2016-04-11 12:46:41,426 55656c30 Thread-7 iperf(1/1) INFO     Running: ssh -A -p 22 perfkit@8.35.192.26 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/perfkitbenchmarker_keyfile hostname
+2016-04-11 12:46:42,188 55656c30 Thread-7 iperf(1/1) INFO     Running: ssh -A -p 22 perfkit@8.35.192.26 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/perfkitbenchmarker_keyfile hostname
+2016-04-11 12:46:42,370 55656c30 Thread-6 iperf(1/1) INFO     Running: ssh -A -p 22 perfkit@104.197.249.254 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/perfkitbenchmarker_keyfile hostname
+2016-04-11 12:46:43,055 55656c30 Thread-7 iperf(1/1) INFO     Running: ssh -A -p 22 perfkit@8.35.192.26 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/perfkitbenchmarker_keyfile hostname
+2016-04-11 12:46:43,364 55656c30 Thread-6 iperf(1/1) INFO     Running: ssh -A -p 22 perfkit@104.197.249.254 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/perfkitbenchmarker_keyfile hostname
+2016-04-11 12:46:43,789 55656c30 Thread-7 iperf(1/1) INFO     Running: ssh -A -p 22 perfkit@8.35.192.26 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/perfkitbenchmarker_keyfile hostname
+2016-04-11 12:46:44,376 55656c30 Thread-6 iperf(1/1) INFO     Running: ssh -A -p 22 perfkit@104.197.249.254 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/perfkitbenchmarker_keyfile hostname
+2016-04-11 12:46:44,936 55656c30 Thread-7 iperf(1/1) INFO     Running: ssh -A -p 22 perfkit@8.35.192.26 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/perfkitbenchmarker_keyfile hostname
+2016-04-11 12:46:45,489 55656c30 Thread-6 iperf(1/1) INFO     Running: ssh -A -p 22 perfkit@104.197.249.254 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/perfkitbenchmarker_keyfile hostname
+2016-04-11 12:46:46,001 55656c30 Thread-7 iperf(1/1) INFO     Running: ssh -A -p 22 perfkit@8.35.192.26 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/perfkitbenchmarker_keyfile hostname
+2016-04-11 12:46:46,435 55656c30 Thread-6 iperf(1/1) INFO     Running: ssh -A -p 22 perfkit@104.197.249.254 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/perfkitbenchmarker_keyfile hostname
+2016-04-11 12:46:47,054 55656c30 Thread-7 iperf(1/1) INFO     Running: ssh -A -p 22 perfkit@8.35.192.26 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/perfkitbenchmarker_keyfile hostname
+2016-04-11 12:46:47,285 55656c30 Thread-6 iperf(1/1) INFO     Running: ssh -A -p 22 perfkit@104.197.249.254 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/perfkitbenchmarker_keyfile hostname
+2016-04-11 12:46:48,043 55656c30 Thread-6 iperf(1/1) INFO     Running: ssh -A -p 22 perfkit@104.197.249.254 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/perfkitbenchmarker_keyfile hostname
+2016-04-11 12:46:50,447 55656c30 Thread-7 iperf(1/1) INFO     Running: gcloud compute instances add-metadata pkb-55656c30-1 --format json --quiet --project sage-potential-127001 --zone us-central1-a --metadata benchmark_uid=iperf0,benchmark=iperf,perfkit_uuid=12e202ee-c629-4f40-b69b-b99c1e11131f
+2016-04-11 12:46:52,346 55656c30 Thread-6 iperf(1/1) INFO     Running: gcloud compute instances add-metadata pkb-55656c30-0 --format json --quiet --project sage-potential-127001 --zone us-central1-a --metadata benchmark_uid=iperf0,benchmark=iperf,perfkit_uuid=12e202ee-c629-4f40-b69b-b99c1e11131f
+2016-04-11 12:46:58,982 55656c30 Thread-7 iperf(1/1) INFO     Running: ssh -A -p 22 perfkit@8.35.192.26 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/perfkitbenchmarker_keyfile mkdir -p /tmp/pkb
+2016-04-11 12:47:08,181 55656c30 Thread-6 iperf(1/1) INFO     Ran gcloud compute instances add-metadata pkb-55656c30-0 --format json --quiet --project sage-potential-127001 --zone us-central1-a --metadata benchmark_uid=iperf0,benchmark=iperf,perfkit_uuid=12e202ee-c629-4f40-b69b-b99c1e11131f. Got return code (1).
+STDOUT: []
+
+STDERR: ERROR: (gcloud.compute.instances.add-metadata) There was a problem modifying the resource:
+ - Internal Error
+
+2016-04-11 12:47:08,182 55656c30 Thread-6 iperf(1/1) INFO     Running: ssh -A -p 22 perfkit@104.197.249.254 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/perfkitbenchmarker_keyfile mkdir -p /tmp/pkb
+2016-04-11 12:47:09,225 55656c30 MainThread iperf(1/1) INFO     ssh to VMs in this benchmark by name with:
+  ssh -F /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/ssh_config <vm_name>
+  ssh -F /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/ssh_config vm<index>
+  ssh -F /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/ssh_config <group_name>-<index>
+2016-04-11 12:47:09,227 55656c30 MainThread iperf(1/1) INFO     Preparing benchmark iperf
+2016-04-11 12:47:09,228 55656c30 MainThread iperf(1/1) INFO     Running: ssh -A -p 22 perfkit@104.197.249.254 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/perfkitbenchmarker_keyfile sudo apt-get update
+2016-04-11 12:47:17,405 55656c30 MainThread iperf(1/1) INFO     Running: ssh -A -p 22 perfkit@104.197.249.254 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/perfkitbenchmarker_keyfile sudo DEBIAN_FRONTEND='noninteractive' /usr/bin/apt-get -y install iperf
+2016-04-11 12:47:21,299 55656c30 MainThread iperf(1/1) INFO     Running: gcloud compute firewall-rules create perfkit-firewall-55656c30-20000 --format json --quiet --project sage-potential-127001 --allow tcp:20000,udp:20000 --network pkb-network-55656c30
+2016-04-11 12:48:07,530 55656c30 MainThread iperf(1/1) INFO     Running: gcloud compute firewall-rules describe perfkit-firewall-55656c30-20000 --format json --quiet --project sage-potential-127001
+2016-04-11 12:48:09,163 55656c30 MainThread iperf(1/1) INFO     Running: ssh -A -p 22 perfkit@104.197.249.254 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/perfkitbenchmarker_keyfile nohup iperf --server --port 20000 &> /dev/null &
+2016-04-11 12:48:10,337 55656c30 MainThread iperf(1/1) INFO     Running: ssh -A -p 22 perfkit@104.197.249.254 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/perfkitbenchmarker_keyfile pgrep -n iperf
+2016-04-11 12:48:11,297 55656c30 MainThread iperf(1/1) INFO     Running: ssh -A -p 22 perfkit@8.35.192.26 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/perfkitbenchmarker_keyfile sudo apt-get update
+2016-04-11 12:48:17,856 55656c30 MainThread iperf(1/1) INFO     Running: ssh -A -p 22 perfkit@8.35.192.26 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/perfkitbenchmarker_keyfile sudo DEBIAN_FRONTEND='noninteractive' /usr/bin/apt-get -y install iperf
+2016-04-11 12:48:21,256 55656c30 MainThread iperf(1/1) INFO     Running: ssh -A -p 22 perfkit@8.35.192.26 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/perfkitbenchmarker_keyfile nohup iperf --server --port 20000 &> /dev/null &
+2016-04-11 12:48:22,397 55656c30 MainThread iperf(1/1) INFO     Running: ssh -A -p 22 perfkit@8.35.192.26 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/perfkitbenchmarker_keyfile pgrep -n iperf
+2016-04-11 12:48:23,385 55656c30 MainThread iperf(1/1) INFO     Running benchmark iperf
+2016-04-11 12:48:23,387 55656c30 MainThread iperf(1/1) INFO     Iperf Results:
+2016-04-11 12:48:23,387 55656c30 MainThread iperf(1/1) INFO     Running: ssh -A -p 22 perfkit@104.197.249.254 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/perfkitbenchmarker_keyfile iperf --client 8.35.192.26 --port 20000 --format m --time 60 -P 1
+2016-04-11 12:49:24,487 55656c30 MainThread iperf(1/1) INFO     Ran ssh -A -p 22 perfkit@104.197.249.254 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/perfkitbenchmarker_keyfile iperf --client 8.35.192.26 --port 20000 --format m --time 60 -P 1. Got return code (0).
+STDOUT: ------------------------------------------------------------
+Client connecting to 8.35.192.26, TCP port 20000
+TCP window size: 0.04 MByte (default)
+------------------------------------------------------------
+[  3] local 10.0.0.3 port 38578 connected with 8.35.192.26 port 20000
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0-60.0 sec  6772 MBytes   947 Mbits/sec
+
+STDERR: Warning: Permanently added '104.197.249.254' (ECDSA) to the list of known hosts.
+
+2016-04-11 12:49:24,490 55656c30 MainThread iperf(1/1) INFO     Running: ssh -A -p 22 perfkit@104.197.249.254 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/perfkitbenchmarker_keyfile ping -c 1 10.0.0.2
+2016-04-11 12:49:25,624 55656c30 MainThread iperf(1/1) INFO     Running: ssh -A -p 22 perfkit@104.197.249.254 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/perfkitbenchmarker_keyfile iperf --client 10.0.0.2 --port 20000 --format m --time 60 -P 1
+2016-04-11 12:50:26,748 55656c30 MainThread iperf(1/1) INFO     Ran ssh -A -p 22 perfkit@104.197.249.254 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/perfkitbenchmarker_keyfile iperf --client 10.0.0.2 --port 20000 --format m --time 60 -P 1. Got return code (0).
+STDOUT: ------------------------------------------------------------
+Client connecting to 10.0.0.2, TCP port 20000
+TCP window size: 0.04 MByte (default)
+------------------------------------------------------------
+[  3] local 10.0.0.3 port 42473 connected with 10.0.0.2 port 20000
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0-60.0 sec  27296 MBytes  3816 Mbits/sec
+
+STDERR: Warning: Permanently added '104.197.249.254' (ECDSA) to the list of known hosts.
+
+2016-04-11 12:50:26,750 55656c30 MainThread iperf(1/1) INFO     Running: ssh -A -p 22 perfkit@8.35.192.26 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/perfkitbenchmarker_keyfile iperf --client 104.197.249.254 --port 20000 --format m --time 60 -P 1
+2016-04-11 12:51:27,819 55656c30 MainThread iperf(1/1) INFO     Ran ssh -A -p 22 perfkit@8.35.192.26 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/perfkitbenchmarker_keyfile iperf --client 104.197.249.254 --port 20000 --format m --time 60 -P 1. Got return code (0).
+STDOUT: ------------------------------------------------------------
+Client connecting to 104.197.249.254, TCP port 20000
+TCP window size: 0.04 MByte (default)
+------------------------------------------------------------
+[  3] local 10.0.0.2 port 54822 connected with 104.197.249.254 port 20000
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0-60.0 sec  8728 MBytes  1220 Mbits/sec
+
+STDERR: Warning: Permanently added '8.35.192.26' (ECDSA) to the list of known hosts.
+
+2016-04-11 12:51:27,820 55656c30 MainThread iperf(1/1) INFO     Running: ssh -A -p 22 perfkit@8.35.192.26 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/perfkitbenchmarker_keyfile ping -c 1 10.0.0.3
+2016-04-11 12:51:28,873 55656c30 MainThread iperf(1/1) INFO     Running: ssh -A -p 22 perfkit@8.35.192.26 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/perfkitbenchmarker_keyfile iperf --client 10.0.0.3 --port 20000 --format m --time 60 -P 1
+2016-04-11 12:52:30,040 55656c30 MainThread iperf(1/1) INFO     Ran ssh -A -p 22 perfkit@8.35.192.26 -2 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o ConnectTimeout=5 -o GSSAPIAuthentication=no -o ServerAliveInterval=30 -o ServerAliveCountMax=10 -i /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/perfkitbenchmarker_keyfile iperf --client 10.0.0.3 --port 20000 --format m --time 60 -P 1. Got return code (0).
+STDOUT: ------------------------------------------------------------
+Client connecting to 10.0.0.3, TCP port 20000
+TCP window size: 0.04 MByte (default)
+------------------------------------------------------------
+[  3] local 10.0.0.2 port 42914 connected with 10.0.0.3 port 20000
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0-60.0 sec  28444 MBytes  3976 Mbits/sec
+
+STDERR: Warning: Permanently added '8.35.192.26' (ECDSA) to the list of known hosts.
+
+2016-04-11 12:52:30,042 55656c30 MainThread iperf(1/1) INFO     Cleaning up benchmark iperf
+2016-04-11 12:52:30,043 55656c30 MainThread iperf(1/1) INFO     Tearing down resources for benchmark iperf
+2016-04-11 12:52:30,043 55656c30 Thread-59 iperf(1/1) INFO     Running: gcloud compute instances delete pkb-55656c30-0 --format json --quiet --project sage-potential-127001 --zone us-central1-a
+2016-04-11 12:52:30,044 55656c30 Thread-60 iperf(1/1) INFO     Running: gcloud compute instances delete pkb-55656c30-1 --format json --quiet --project sage-potential-127001 --zone us-central1-a
+2016-04-11 12:53:03,627 55656c30 Thread-60 iperf(1/1) INFO     Running: gcloud compute instances describe pkb-55656c30-1 --format json --quiet --project sage-potential-127001 --zone us-central1-a
+2016-04-11 12:53:08,601 55656c30 Thread-59 iperf(1/1) INFO     Running: gcloud compute instances describe pkb-55656c30-0 --format json --quiet --project sage-potential-127001 --zone us-central1-a
+2016-04-11 12:53:10,097 55656c30 MainThread iperf(1/1) INFO     Running: gcloud compute firewall-rules delete perfkit-firewall-55656c30-20000 --format json --quiet --project sage-potential-127001
+2016-04-11 12:53:27,981 55656c30 MainThread iperf(1/1) INFO     Running: gcloud compute firewall-rules describe perfkit-firewall-55656c30-20000 --format json --quiet --project sage-potential-127001
+2016-04-11 12:53:29,409 55656c30 MainThread iperf(1/1) INFO     Running: gcloud compute firewall-rules delete perfkit-firewall-55656c30-22 --format json --quiet --project sage-potential-127001
+2016-04-11 12:53:47,350 55656c30 MainThread iperf(1/1) INFO     Running: gcloud compute firewall-rules describe perfkit-firewall-55656c30-22 --format json --quiet --project sage-potential-127001
+2016-04-11 12:53:49,613 55656c30 MainThread iperf(1/1) INFO     Running: gcloud compute firewall-rules delete default-internal-55656c30 --format json --quiet --project sage-potential-127001
+2016-04-11 12:54:07,355 55656c30 MainThread iperf(1/1) INFO     Running: gcloud compute firewall-rules describe default-internal-55656c30 --format json --quiet --project sage-potential-127001
+2016-04-11 12:54:08,721 55656c30 MainThread iperf(1/1) INFO     Running: gcloud compute networks delete pkb-network-55656c30 --format json --quiet --project sage-potential-127001
+2016-04-11 12:54:42,148 55656c30 MainThread iperf(1/1) INFO     Running: gcloud compute networks describe pkb-network-55656c30 --format json --quiet --project sage-potential-127001
+2016-04-11 12:54:43,549 55656c30 MainThread INFO     
+-------------------------PerfKitBenchmarker Complete Results-------------------------
+{'metadata': {'ip_type': 'external',
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'receiving_machine_type': 'n1-highcpu-2',
+              'receiving_zone': 'us-central1-a',
+              'runtime_in_seconds': 60,
+              'sending_machine_type': 'n1-highcpu-2',
+              'sending_thread_count': 1,
+              'sending_zone': 'us-central1-a',
+              'vm_1_cloud': 'GCP',
+              'vm_1_image': 'ubuntu-14-04',
+              'vm_1_machine_type': 'n1-highcpu-2',
+              'vm_1_vm_count': 1,
+              'vm_1_zone': 'us-central1-a',
+              'vm_2_cloud': 'GCP',
+              'vm_2_image': 'ubuntu-14-04',
+              'vm_2_machine_type': 'n1-highcpu-2',
+              'vm_2_vm_count': 1,
+              'vm_2_zone': 'us-central1-a'},
+ 'metric': 'Throughput',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '12e202ee-c629-4f40-b69b-b99c1e11131f',
+ 'sample_uri': '75b50051-314c-4d35-b151-63ddd02bf706',
+ 'test': 'iperf',
+ 'timestamp': 1460393364.490053,
+ 'unit': 'Mbits/sec',
+ 'value': 947.0}
+{'metadata': {'ip_type': 'internal',
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'receiving_machine_type': 'n1-highcpu-2',
+              'receiving_zone': 'us-central1-a',
+              'runtime_in_seconds': 60,
+              'sending_machine_type': 'n1-highcpu-2',
+              'sending_thread_count': 1,
+              'sending_zone': 'us-central1-a',
+              'vm_1_cloud': 'GCP',
+              'vm_1_image': 'ubuntu-14-04',
+              'vm_1_machine_type': 'n1-highcpu-2',
+              'vm_1_vm_count': 1,
+              'vm_1_zone': 'us-central1-a',
+              'vm_2_cloud': 'GCP',
+              'vm_2_image': 'ubuntu-14-04',
+              'vm_2_machine_type': 'n1-highcpu-2',
+              'vm_2_vm_count': 1,
+              'vm_2_zone': 'us-central1-a'},
+ 'metric': 'Throughput',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '12e202ee-c629-4f40-b69b-b99c1e11131f',
+ 'sample_uri': '1b24da7a-2648-4c20-9543-20ad793d8570',
+ 'test': 'iperf',
+ 'timestamp': 1460393426.75058,
+ 'unit': 'Mbits/sec',
+ 'value': 3816.0}
+{'metadata': {'ip_type': 'external',
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'receiving_machine_type': 'n1-highcpu-2',
+              'receiving_zone': 'us-central1-a',
+              'runtime_in_seconds': 60,
+              'sending_machine_type': 'n1-highcpu-2',
+              'sending_thread_count': 1,
+              'sending_zone': 'us-central1-a',
+              'vm_1_cloud': 'GCP',
+              'vm_1_image': 'ubuntu-14-04',
+              'vm_1_machine_type': 'n1-highcpu-2',
+              'vm_1_vm_count': 1,
+              'vm_1_zone': 'us-central1-a',
+              'vm_2_cloud': 'GCP',
+              'vm_2_image': 'ubuntu-14-04',
+              'vm_2_machine_type': 'n1-highcpu-2',
+              'vm_2_vm_count': 1,
+              'vm_2_zone': 'us-central1-a'},
+ 'metric': 'Throughput',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '12e202ee-c629-4f40-b69b-b99c1e11131f',
+ 'sample_uri': '823f73cf-8f96-48a5-a11f-a46d2d3e5407',
+ 'test': 'iperf',
+ 'timestamp': 1460393487.820072,
+ 'unit': 'Mbits/sec',
+ 'value': 1220.0}
+{'metadata': {'ip_type': 'internal',
+              'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'receiving_machine_type': 'n1-highcpu-2',
+              'receiving_zone': 'us-central1-a',
+              'runtime_in_seconds': 60,
+              'sending_machine_type': 'n1-highcpu-2',
+              'sending_thread_count': 1,
+              'sending_zone': 'us-central1-a',
+              'vm_1_cloud': 'GCP',
+              'vm_1_image': 'ubuntu-14-04',
+              'vm_1_machine_type': 'n1-highcpu-2',
+              'vm_1_vm_count': 1,
+              'vm_1_zone': 'us-central1-a',
+              'vm_2_cloud': 'GCP',
+              'vm_2_image': 'ubuntu-14-04',
+              'vm_2_machine_type': 'n1-highcpu-2',
+              'vm_2_vm_count': 1,
+              'vm_2_zone': 'us-central1-a'},
+ 'metric': 'Throughput',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '12e202ee-c629-4f40-b69b-b99c1e11131f',
+ 'sample_uri': '07c97e95-944c-404b-ae3f-e1e760897134',
+ 'test': 'iperf',
+ 'timestamp': 1460393550.04117,
+ 'unit': 'Mbits/sec',
+ 'value': 3976.0}
+{'metadata': {'perfkitbenchmarker_version': 'unknown',
+              'preemptible': False,
+              'vm_1_cloud': 'GCP',
+              'vm_1_image': 'ubuntu-14-04',
+              'vm_1_machine_type': 'n1-highcpu-2',
+              'vm_1_vm_count': 1,
+              'vm_1_zone': 'us-central1-a',
+              'vm_2_cloud': 'GCP',
+              'vm_2_image': 'ubuntu-14-04',
+              'vm_2_machine_type': 'n1-highcpu-2',
+              'vm_2_vm_count': 1,
+              'vm_2_zone': 'us-central1-a'},
+ 'metric': 'End to End Runtime',
+ 'official': False,
+ 'owner': 'linlinding',
+ 'product_name': 'PerfKitBenchmarker',
+ 'run_uri': '12e202ee-c629-4f40-b69b-b99c1e11131f',
+ 'sample_uri': 'd32a74dc-65e8-45f5-8542-79c9173b7f6e',
+ 'test': 'iperf',
+ 'timestamp': 1460393683.541669,
+ 'unit': 'seconds',
+ 'value': 585.170490026474}
+
+
+-------------------------PerfKitBenchmarker Results Summary-------------------------
+IPERF:
+  receiving_machine_type="n1-highcpu-2" receiving_zone="us-central1-a" runtime_in_seconds="60" sending_machine_type="n1-highcpu-2" sending_thread_count="1" sending_zone="us-central1-a"
+  Throughput                          947.000000 Mbits/sec                      (ip_type="external")
+  Throughput                         3816.000000 Mbits/sec                      (ip_type="internal")
+  Throughput                         1220.000000 Mbits/sec                      (ip_type="external")
+  Throughput                         3976.000000 Mbits/sec                      (ip_type="internal")
+  End to End Runtime                  585.170490 seconds                       
+
+-------------------------
+For all tests: perfkitbenchmarker_version="unknown" preemptible="False" vm_1_cloud="GCP" vm_1_image="ubuntu-14-04" vm_1_machine_type="n1-highcpu-2" vm_1_vm_count="1" vm_1_zone="us-central1-a" vm_2_cloud="GCP" vm_2_image="ubuntu-14-04" vm_2_machine_type="n1-highcpu-2" vm_2_vm_count="1" vm_2_zone="us-central1-a"
+2016-04-11 12:54:43,550 55656c30 MainThread INFO     Publishing 5 samples to /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/perfkitbenchmarker_results.json
+2016-04-11 12:54:43,550 55656c30 MainThread INFO     Benchmark run statuses:
+------------------------
+Name   UID     Status   
+------------------------
+iperf  iperf0  SUCCEEDED
+------------------------
+Success rate: 100.00% (1/1)
+2016-04-11 12:54:43,550 55656c30 MainThread INFO     Complete logs can be found at: /var/folders/_8/p4b95h9j2tzc63n0_z91c30w0000gn/T/perfkitbenchmarker/run_55656c30/pkb.log
+LinLindeMacBook-Pro:PerfKitBenchmarker-1.2.0 linlinding$ 
